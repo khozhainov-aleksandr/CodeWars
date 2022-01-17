@@ -1,22 +1,10 @@
 'use strict';
 
-// Isograms
+// List Filtering
 
-function isIsogram(str){
-    const strToArr = str.toLowerCase().split('');
-    let arr = [];
-    let total = '';
-
-    strToArr.forEach(el => {
-        arr.push(el);
-
-        if ( (arr.filter((item) => (item === el)).length) >= 2 ) {
-            total = false;
-        }
-    });
-
-    return total === '';
+function filterList(list) {
+    return list.filter(el => (typeof(el) === 'number'));
 }
 
-console.log( isIsogram("Dermatoglyphics") ); // true
-console.log( isIsogram("moOse") ); // false
+console.log( filterList([1,2,'a','b']) ); // [1,2]
+console.log( filterList([1,2,'aasf','1','123',123]) ); // [1,2,123]
