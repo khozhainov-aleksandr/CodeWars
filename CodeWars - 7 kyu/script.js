@@ -1,9 +1,20 @@
 'use strict';
 
-// Descending Order
+// Get the Middle Character
 
-function descendingOrder(number){
-    return Number( String(number).split('').sort((a,b) => (b-a)).join('') );
+// function getMiddle(str) {
+//     let arr = str.split('');
+
+//     if (arr.length % 2) {
+//         return arr[Math.trunc(arr.length / 2)];
+//     } else {
+//         return `${arr[(arr.length / 2) - 1]}${arr[arr.length / 2]}`;
+//     }
+// }
+
+function getMiddle(str) {
+    return (str.split('').length % 2) ? str.split('')[Math.trunc(str.split('').length / 2)] : `${str.split('')[(str.split('').length / 2) - 1]}${str.split('')[str.split('').length / 2]}`;
 }
 
-console.log( descendingOrder(145263) ); // 654321
+console.log( getMiddle("testing") ); // "t"
+console.log( getMiddle("middle") ); // "dd"
