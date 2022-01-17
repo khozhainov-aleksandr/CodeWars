@@ -1,14 +1,10 @@
 'use strict';
 
-// Exes and Ohs
+// Shortest Word
 
-function XO(str) {
-    const arr = str.toLowerCase().split('');
-    let x = arr.filter(el => el === 'x').length;
-    let o = arr.filter(el => el === 'o').length;
-
-    return (x === o);
+function findShort(str) {
+    return str.split(' ').sort((a,b) => a.length - b.length)[0].length;
 }
 
-console.log( XO("xxOo") ); // true
-console.log( XO("ooom") ); // false
+console.log( findShort("bitcoin take over the world maybe who knows perhaps") ); // 3
+console.log( findShort("Let's travel abroad shall we") ); // 2
