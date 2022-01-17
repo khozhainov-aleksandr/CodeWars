@@ -1,10 +1,14 @@
 'use strict';
 
-// List Filtering
+// Exes and Ohs
 
-function filterList(list) {
-    return list.filter(el => (typeof(el) === 'number'));
+function XO(str) {
+    const arr = str.toLowerCase().split('');
+    let x = arr.filter(el => el === 'x').length;
+    let o = arr.filter(el => el === 'o').length;
+
+    return (x === o);
 }
 
-console.log( filterList([1,2,'a','b']) ); // [1,2]
-console.log( filterList([1,2,'aasf','1','123',123]) ); // [1,2,123]
+console.log( XO("xxOo") ); // true
+console.log( XO("ooom") ); // false
