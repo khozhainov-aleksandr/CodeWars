@@ -1,10 +1,22 @@
 'use strict';
 
-// You're a square!
+// Isograms
 
-function isSquare(number){
-    return Math.sqrt(number) % 1 === 0;
+function isIsogram(str){
+    const strToArr = str.toLowerCase().split('');
+    let arr = [];
+    let total = '';
+
+    strToArr.forEach(el => {
+        arr.push(el);
+
+        if ( (arr.filter((item) => (item === el)).length) >= 2 ) {
+            total = false;
+        }
+    });
+
+    return total === '';
 }
 
-console.log( isSquare(25) ); // true
-console.log( isSquare(26) ); // false
+console.log( isIsogram("Dermatoglyphics") ); // true
+console.log( isIsogram("moOse") ); // false
