@@ -1,10 +1,11 @@
 'use strict';
 
-// Shortest Word
+// Jaden Casing Strings
 
-function findShort(str) {
-    return str.split(' ').sort((a,b) => a.length - b.length)[0].length;
-}
+String.prototype.toJadenCase = function () {
+    return this.split(' ').map(el => el.replace(el[0], el[0].toUpperCase())).join(' ');
+};
 
-console.log( findShort("bitcoin take over the world maybe who knows perhaps") ); // 3
-console.log( findShort("Let's travel abroad shall we") ); // 2
+let str = "How can mirrors be real if our eyes aren't real";
+
+console.log( str.toJadenCase() ); // "How Can Mirrors Be Real If Our Eyes Aren't Real"
