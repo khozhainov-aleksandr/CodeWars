@@ -1,11 +1,18 @@
 'use strict';
 
-// Jaden Casing Strings
+// Complementary DNA
 
-String.prototype.toJadenCase = function () {
-    return this.split(' ').map(el => el.replace(el[0], el[0].toUpperCase())).join(' ');
-};
+function DNAStrand(dna) {
+    return dna.split('').map(element => {
+        switch(element) {
+            case 'A': return 'T';
+            case 'T': return 'A'; 
+            case 'G': return 'C';
+            case 'C': return 'G';
+        }
+    }).join('');
+}
 
-let str = "How can mirrors be real if our eyes aren't real";
-
-console.log( str.toJadenCase() ); // "How Can Mirrors Be Real If Our Eyes Aren't Real"
+console.log( DNAStrand("AAAA") ); // "TTTT"
+console.log( DNAStrand("ATTGC") ); // "TAACG"
+console.log( DNAStrand("GTAT") ); // "CATA"
