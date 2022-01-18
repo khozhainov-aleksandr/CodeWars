@@ -1,10 +1,21 @@
 'use strict';
 
-// Credit Card Mask
+// Beginner Series #3 Sum of Numbers
 
-function maskify(cc) {
-    return cc.split('').reverse().map((el, i) => (i >= 4) ? '#' : el).reverse().join('');
+function getSum(a, b) {
+    const x = (a < b) ? a : b;
+    const z = (a > b) ? a : b;
+    let sum = [];
+
+    for(let i = x; i <= z; i++) {
+        sum.push(i);
+    }
+
+    return (a === b) ? a : sum.reduce((sum, el) => (sum + el));
 }
 
-console.log( maskify('4556364607935616') ); // '############5616'
-console.log( maskify('64607935616') ); // "#######5616"
+console.log( getSum(5, -3) ); // 9
+console.log( getSum(0, -1) ); // -1
+console.log( getSum(0, 1) ); // 1
+console.log( getSum(1, 1) ); // 1
+console.log( getSum(-1, 2) ); // 2
