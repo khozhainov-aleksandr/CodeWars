@@ -1,18 +1,10 @@
 'use strict';
 
-// Complementary DNA
+// Credit Card Mask
 
-function DNAStrand(dna) {
-    return dna.split('').map(element => {
-        switch(element) {
-            case 'A': return 'T';
-            case 'T': return 'A'; 
-            case 'G': return 'C';
-            case 'C': return 'G';
-        }
-    }).join('');
+function maskify(cc) {
+    return cc.split('').reverse().map((el, i) => (i >= 4) ? '#' : el).reverse().join('');
 }
 
-console.log( DNAStrand("AAAA") ); // "TTTT"
-console.log( DNAStrand("ATTGC") ); // "TAACG"
-console.log( DNAStrand("GTAT") ); // "CATA"
+console.log( maskify('4556364607935616') ); // '############5616'
+console.log( maskify('64607935616') ); // "#######5616"
