@@ -1,11 +1,14 @@
 'use strict';
 
-// Sum of two lowest positive integers
+// Two to One
 
-function sumTwoSmallestNumbers(numbers) {  
-    const [firstNumber, secondNumber] = numbers.sort((a,b) => (a-b));
-    return firstNumber + secondNumber;
+function longest(str1, str2) {
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    const arr = str1.split('').concat( str2.split('') ).sort();
+
+    return arr.filter( (el, i) => (alphabet[i] !== el) ).map( (el,i,arr) => (arr[i] !== arr[i - 1]) ? el : '').join('');
 }
 
-console.log( sumTwoSmallestNumbers([5, 8, 12, 19, 22]) ); // 13
-console.log( sumTwoSmallestNumbers([23, 71, 33, 82, 1]) ); // 24
+console.log( longest("aretheyhere", "yestheyarehere") ); // "aehrsty"
+console.log( longest("loopingisfunbutdangerous", "lessdangerousthancoding") ); // "abcdefghilnoprstu"
+console.log( longest("inmanylanguages", "theresapairoffunctions") ); // "acefghilmnoprstuy"
