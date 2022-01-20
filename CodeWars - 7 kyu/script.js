@@ -1,12 +1,12 @@
 'use strict';
 
-// Find the next perfect square!
+// Friend or Foe?
 
-function findNextSquare(square) {
-    const nextSquare = Math.sqrt(square) + 1;
-    return ((Math.sqrt(square) % 1) === 0) ? nextSquare * nextSquare : -1;
+function friend(friends){
+    return friends.filter((el) => ( el.length <= 4 && isNaN( Number(el) ) ));
 }
 
-console.log( findNextSquare(121) ); // 144
-console.log( findNextSquare(319225) ); // 320356
-console.log( findNextSquare(155) ); // -1
+console.log( friend(["Ryan", "Kieran", "Mark"]) ); // ["Ryan", "Mark"]
+console.log( friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]) ); // ["Ryan"]
+console.log( friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]) ); // ["Jimm", "Cari", "aret"]
+console.log( friend(["Love", "Your", "Face", "1"]) ); // ["Love", "Your", "Face"]
