@@ -1,16 +1,22 @@
 'use strict';
 
-// Categorize New Member
+// Regex validate PIN code
 
-function openOrSenior(data) {
-    let list = [];
+function validatePIN (pin) {
+    let filterArr = pin.trim().split('').filter(el => !isNaN( Number(el) ));
 
-    data.forEach(element => {
-        (element[0] >= 55 && element[1] > 7) ? list.push('Senior') : list.push('Open')
-    });
+    if (pin.length !== filterArr.length) { return false; }
 
-    return list;
+    return !(filterArr.length !== 4 && filterArr.length !== 6);
 }
 
-console.log( openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]) ); // ['Open', 'Senior', 'Open', 'Senior']
-console.log( openOrSenior([[59, 12],[55,-1],[12, -2],[12, 12]]) ); // ['Senior', 'Open', 'Open', 'Open']
+console.log( validatePIN("1234") ); // true
+console.log( validatePIN("090909") ); // true
+
+console.log( validatePIN("123 ") ); // false
+console.log( validatePIN("1234 ") ); // false
+console.log( validatePIN("09.9") ); // false
+console.log( validatePIN("-909") ); // false
+console.log( validatePIN("-1234") ); // false
+console.log( validatePIN("1.234") ); // false
+console.log( validatePIN("-1.234") ); //false
