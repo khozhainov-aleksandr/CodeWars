@@ -1,12 +1,16 @@
 'use strict';
 
-// Friend or Foe?
+// Categorize New Member
 
-function friend(friends){
-    return friends.filter((el) => ( el.length <= 4 && isNaN( Number(el) ) ));
+function openOrSenior(data) {
+    let list = [];
+
+    data.forEach(element => {
+        (element[0] >= 55 && element[1] > 7) ? list.push('Senior') : list.push('Open')
+    });
+
+    return list;
 }
 
-console.log( friend(["Ryan", "Kieran", "Mark"]) ); // ["Ryan", "Mark"]
-console.log( friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]) ); // ["Ryan"]
-console.log( friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]) ); // ["Jimm", "Cari", "aret"]
-console.log( friend(["Love", "Your", "Face", "1"]) ); // ["Love", "Your", "Face"]
+console.log( openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]) ); // ['Open', 'Senior', 'Open', 'Senior']
+console.log( openOrSenior([[59, 12],[55,-1],[12, -2],[12, 12]]) ); // ['Senior', 'Open', 'Open', 'Open']
