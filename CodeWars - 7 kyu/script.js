@@ -1,22 +1,14 @@
 'use strict';
 
-// Regex validate PIN code
+// Small enough? - Beginner
 
-function validatePIN (pin) {
-    let filterArr = pin.trim().split('').filter(el => !isNaN( Number(el) ));
-
-    if (pin.length !== filterArr.length) { return false; }
-
-    return !(filterArr.length !== 4 && filterArr.length !== 6);
+function smallEnough(arr, limit) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] >= limit) { return false; }
+    }
+    
+    return true;
 }
 
-console.log( validatePIN("1234") ); // true
-console.log( validatePIN("090909") ); // true
-
-console.log( validatePIN("123 ") ); // false
-console.log( validatePIN("1234 ") ); // false
-console.log( validatePIN("09.9") ); // false
-console.log( validatePIN("-909") ); // false
-console.log( validatePIN("-1234") ); // false
-console.log( validatePIN("1.234") ); // false
-console.log( validatePIN("-1.234") ); //false
+console.log( smallEnough([78, 117, 110, 99, 104, 117, 107, 115], 100) ); // false
+console.log( smallEnough([80, 117, 115, 104, 45, 85, 112, 115], 120) ); // true
