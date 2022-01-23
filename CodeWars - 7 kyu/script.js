@@ -1,11 +1,14 @@
 'use strict';
 
-// No Loops 2 - You only need one
+// No Loops 3 - Copy Within
 
-function check(a, x) {
-    return a.includes(x);
+function copy(array, start, stop, place) {
+    const newCopyArray = array.slice(start, stop);
+    array.splice(place, newCopyArray.length, ...newCopyArray);
+
+    return array;
 }
 
-console.log( check([66, 101], 66) ); // true
-console.log( check([80, 117, 115, 104, 45, 85, 112, 115], 45) ); // true
-console.log( check(['what', 'a', 'great', 'kata'], 'kat') ); // false
+console.log( copy([1, 2, 3, 4, 5], 0, 2, -2) ); // [1, 2, 3, 1, 2]
+console.log( copy([1, 2, 3, 4, 5], 3, 4, 0) ); // [4, 2, 3, 4, 5]
+console.log( copy(["Banana", "Orange", "Apple", "Mango"], 0, 2, 2) ); // ["Banana", "Orange", "Banana", "Orange"]
