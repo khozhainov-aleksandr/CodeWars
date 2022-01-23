@@ -1,11 +1,43 @@
 'use strict';
 
-// Is every value in the array an array?
+// Game Hit the target
 
-const arrCheck = value => value.every(el => Array.isArray(el));
+const solution = (mtrx) => {
 
-console.log( arrCheck([]) ); // true
-console.log( arrCheck([[1],[2],[3]]) ); // true
+    for (let i = 0; i < mtrx.length; i++) {
+        const shot = mtrx[i].findIndex(el => el === '>');
+        const target = mtrx[i].findIndex(el => el === 'x');
 
-console.log( arrCheck([[],{}]) ); // false
-console.log( arrCheck(['A', 'R', 'R', 'A', 'Y']) ); // false
+        if (shot >= 0 && shot < target) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+console.log( solution(
+    [
+        ['>', ' '],
+        [' ', 'x']
+    ]
+) ); // false
+
+console.log( solution(
+    [
+        [' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', '>', ' ', 'x'],
+        [' ', ' ', '', ' ', ' ']
+    ]
+) ); // true
+
+console.log( solution(
+    [
+        [' ', ' ', ' ', ' '],
+        [' ', 'x', '>', ' '],
+        [' ', '', ' ', ' '],
+        [' ', ' ', ' ', ' ']
+    ]
+) ); // false
