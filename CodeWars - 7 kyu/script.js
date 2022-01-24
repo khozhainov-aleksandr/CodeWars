@@ -1,43 +1,11 @@
 'use strict';
 
-// Game Hit the target
+// You only need one - Beginner
 
-const solution = (mtrx) => {
+function check(arr, x) {
+    return !arr.every((el) => (el !== x));
+}
 
-    for (let i = 0; i < mtrx.length; i++) {
-        const shot = mtrx[i].findIndex(el => el === '>');
-        const target = mtrx[i].findIndex(el => el === 'x');
-
-        if (shot >= 0 && shot < target) {
-            return true;
-        }
-    }
-
-    return false;
-};
-
-console.log( solution(
-    [
-        ['>', ' '],
-        [' ', 'x']
-    ]
-) ); // false
-
-console.log( solution(
-    [
-        [' ', ' ', ' ', ' ', ' '],
-        [' ', ' ', ' ', ' ', ' '],
-        [' ', ' ', ' ', ' ', ' '],
-        [' ', ' ', '>', ' ', 'x'],
-        [' ', ' ', '', ' ', ' ']
-    ]
-) ); // true
-
-console.log( solution(
-    [
-        [' ', ' ', ' ', ' '],
-        [' ', 'x', '>', ' '],
-        [' ', '', ' ', ' '],
-        [' ', ' ', ' ', ' ']
-    ]
-) ); // false
+console.log(check([66, 101], 66)); // true
+console.log(check([101, 45, 75, 105, 99, 107], 107)); // true
+console.log(check(['what', 'a', 'great', 'kata'], 'kat')); // false
