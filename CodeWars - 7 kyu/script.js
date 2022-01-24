@@ -1,11 +1,11 @@
 'use strict';
 
-// You only need one - Beginner
+// L1: Set Alarm
 
-function check(arr, x) {
-    return !arr.every((el) => (el !== x));
+function setAlarm(employed, vacation){
+    return (employed === true && vacation === false);
 }
 
-console.log(check([66, 101], 66)); // true
-console.log(check([101, 45, 75, 105, 99, 107], 107)); // true
-console.log(check(['what', 'a', 'great', 'kata'], 'kat')); // false
+console.log(setAlarm(false,true)); // false
+console.log(setAlarm(true, false)); // true
+console.log(setAlarm(true, true)); // false
