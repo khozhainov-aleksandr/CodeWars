@@ -1,11 +1,10 @@
 'use strict';
 
-// Calculate average
+// Jenny's secret message
 
-function findAverage(array) {
-    return (array.toString() === '') ? 0 : array.reduce((sum, el) => (sum + el), 0) / array.length;
-  }
+function greet(name){
+    return (name === "Johnny") ? 'Hello, my love!' : `Hello, ${name}!`;
+}
 
-console.log(findAverage([1,2,3])); // 2
-console.log(findAverage([1,2,3,4])); // 2.5
-console.log(findAverage([])); // 0
+console.log(greet("Jane")); // "Hello, Jane!"
+console.log(greet("Johnny")); // "Hello, my love!"
