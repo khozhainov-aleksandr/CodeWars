@@ -1,10 +1,15 @@
 'use strict';
 
-// Fake Binary
+// Reversed sequence
 
-function fakeBin(x) {
-    return x.split('').map(el => (Number(el) < 5) ? '0' : '1').join('');
-}
+const reverseSeq = (n) => {
+    let res = [];
 
-console.log(fakeBin('45385593107843568')); // '01011110001100111'
-console.log(fakeBin('509321967506747')); // '101000111101101'
+    for (let i = n; i >= 1; i--) {
+        res.push(i);
+    }
+
+    return res;
+};
+
+console.log(reverseSeq(5));  // [5, 4, 3, 2, 1]
