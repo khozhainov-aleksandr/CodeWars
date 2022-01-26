@@ -1,10 +1,10 @@
 'use strict';
 
-// Jenny's secret message
+// Get the mean of an array
 
-function greet(name){
-    return (name === "Johnny") ? 'Hello, my love!' : `Hello, ${name}!`;
+function getAverage(marks){
+    return Math.floor( marks.reduce((sum, el) => (sum + el), 0) / marks.length );
 }
 
-console.log(greet("Jane")); // "Hello, Jane!"
-console.log(greet("Johnny")); // "Hello, my love!"
+console.log(getAverage([1,2,3,4,5,])); // 3
+console.log(getAverage([1,1,1,1,1,1,1,2])); // 1
