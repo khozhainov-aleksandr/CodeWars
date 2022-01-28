@@ -1,16 +1,9 @@
 'use strict';
 
-// Who likes it?
+// Create Phone Number
 
-function likes(names) {
-    if (names.toString() === '') { return 'no one likes this'; }
-    if (names.length === 1) { return `${names[0]} likes this`; }
-    if (names.length === 2) { return `${names[0]} and ${names[1]} like this`; }
-    if (names.length === 3) { return `${names[0]}, ${names[1]} and ${names[2]} like this`; }
-    if (names.length > 3) { return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`; }
+function createPhoneNumber(numbers){
+    return numbers.reduce((sum, el) => sum.replace('X', el), '(XXX) XXX-XXXX');
 }
 
-console.log(likes([])); // 'no one likes this'
-console.log(likes(['Peter'])); // 'Peter likes this'
-console.log(likes(['Jacob', 'Alex'])); // 'Jacob and Alex likes this'
-console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])); // 'Alex, Jacob and 2 others like this'
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])); // "(123) 456-7890"
