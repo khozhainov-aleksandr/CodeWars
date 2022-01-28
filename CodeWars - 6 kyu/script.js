@@ -1,21 +1,16 @@
 'use strict';
 
-// Array.diff
+// Who likes it?
 
-function arrayDiff(a, b) {
-    if (a.toString() === '') { return []; }
-    if (b.toString() === '') { return a; }
-
-    const long = (a.length > b.length) ? a : b;
-    const short = (a.length < b.length) ? a : b;
-    let res = [];
-
-    long.forEach(element => (!short.includes(element)) ? res.push(element) : element);
-
-    return res;
+function likes(names) {
+    if (names.toString() === '') { return 'no one likes this'; }
+    if (names.length === 1) { return `${names[0]} likes this`; }
+    if (names.length === 2) { return `${names[0]} and ${names[1]} like this`; }
+    if (names.length === 3) { return `${names[0]}, ${names[1]} and ${names[2]} like this`; }
+    if (names.length > 3) { return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`; }
 }
 
-console.log(arrayDiff([], [4,5])); // []
-console.log(arrayDiff([1,2,3], [1,2])); // [3]
-console.log(arrayDiff([3,4], [3])); // [4]
-console.log(arrayDiff([1,2,2], [2])); // [1]
+console.log(likes([])); // 'no one likes this'
+console.log(likes(['Peter'])); // 'Peter likes this'
+console.log(likes(['Jacob', 'Alex'])); // 'Jacob and Alex likes this'
+console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])); // 'Alex, Jacob and 2 others like this'
