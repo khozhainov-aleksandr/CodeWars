@@ -1,11 +1,21 @@
 'use strict';
 
-// Stop gninnipS My sdroW!
+// Array.diff
 
-function spinWords(string){
-    return string.split(' ').map(el => (el.length >= 5) ? el.split('').reverse().join('') : el).join(' ');
+function arrayDiff(a, b) {
+    if (a.toString() === '') { return []; }
+    if (b.toString() === '') { return a; }
+
+    const long = (a.length > b.length) ? a : b;
+    const short = (a.length < b.length) ? a : b;
+    let res = [];
+
+    long.forEach(element => (!short.includes(element)) ? res.push(element) : element);
+
+    return res;
 }
 
-console.log(spinWords("Welcome")); // "emocleW"
-console.log(spinWords("Hey fellow warriors")); // "Hey wollef sroirraw"
-console.log(spinWords("Seriously this is the last one")); // "ylsuoireS this is the last one"
+console.log(arrayDiff([], [4,5])); // []
+console.log(arrayDiff([1,2,3], [1,2])); // [3]
+console.log(arrayDiff([3,4], [3])); // [4]
+console.log(arrayDiff([1,2,2], [2])); // [1]
