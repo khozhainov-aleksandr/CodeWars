@@ -1,10 +1,15 @@
 'use strict';
 
-// Beginner Series #1 School Paperwork
+// Sum without highest and lowest number
 
-function paperwork(n, m) {
-    return (n < 0 || m < 0) ? 0 : n * m;
+function sumArray(array) {
+    if (Array.isArray(array) && array.length > 1) {
+      return array.reduce((sum, el) => (sum + el), 0) - ( Math.min(...array) + Math.max(...array) ); 
+    } else {
+      return 0;
+    }
 }
 
-console.log(paperwork(5,5)); // 25
-console.log(paperwork(5,-5)); // 0
+console.log(sumArray(null)); // 0
+console.log(sumArray([ 0, 1, 6, 10, 10 ])); // 17
+console.log(sumArray([ -6, -20, -1, -10, -12 ])); // -28
