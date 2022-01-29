@@ -1,10 +1,10 @@
 'use strict';
 
-// Array plus array
+// Beginner Series #1 School Paperwork
 
-function arrayPlusArray(arr1, arr2) {
-    return arr1.concat(arr2).reduce((sum, el) => (sum + el), 0);
+function paperwork(n, m) {
+    return (n < 0 || m < 0) ? 0 : n * m;
 }
 
-  console.log(arrayPlusArray([1, 2, 3], [4, 5, 6])); // 21
-  console.log(arrayPlusArray([-1, -2, -3], [-4, -5, -6])); // -21
+console.log(paperwork(5,5)); // 25
+console.log(paperwork(5,-5)); // 0
