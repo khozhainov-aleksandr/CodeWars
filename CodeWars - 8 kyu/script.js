@@ -1,15 +1,12 @@
 'use strict';
 
-// Sum without highest and lowest number
+// DNA to RNA Conversion
 
-function sumArray(array) {
-    if (Array.isArray(array) && array.length > 1) {
-      return array.reduce((sum, el) => (sum + el), 0) - ( Math.min(...array) + Math.max(...array) ); 
-    } else {
-      return 0;
-    }
+function DNAtoRNA(dna) {
+  // return dna.replaceAll('T', 'U');
+  return dna.split('').map(el => (el === 'T') ? 'U' : el).join('');
 }
 
-console.log(sumArray(null)); // 0
-console.log(sumArray([ 0, 1, 6, 10, 10 ])); // 17
-console.log(sumArray([ -6, -20, -1, -10, -12 ])); // -28
+console.log(DNAtoRNA("TTTT")); // 'UUUU'
+console.log(DNAtoRNA("GCAT")); // 'GCAU'
+console.log(DNAtoRNA("GACCGCCGCC")); // 'GACCGCCGCC'
