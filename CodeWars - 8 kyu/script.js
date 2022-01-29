@@ -1,15 +1,10 @@
 'use strict';
 
-// Reversed sequence
+// Array plus array
 
-const reverseSeq = (n) => {
-    let res = [];
+function arrayPlusArray(arr1, arr2) {
+    return arr1.concat(arr2).reduce((sum, el) => (sum + el), 0);
+}
 
-    for (let i = n; i >= 1; i--) {
-        res.push(i);
-    }
-
-    return res;
-};
-
-console.log(reverseSeq(5));  // [5, 4, 3, 2, 1]
+  console.log(arrayPlusArray([1, 2, 3], [4, 5, 6])); // 21
+  console.log(arrayPlusArray([-1, -2, -3], [-4, -5, -6])); // -21
