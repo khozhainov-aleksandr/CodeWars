@@ -1,12 +1,9 @@
 'use strict';
 
-// DNA to RNA Conversion
+// Sum Arrays
 
-function DNAtoRNA(dna) {
-  // return dna.replaceAll('T', 'U');
-  return dna.split('').map(el => (el === 'T') ? 'U' : el).join('');
+function sum(numbers) {
+  return numbers.reduce((sum, el) => (sum + el), 0);
 }
 
-console.log(DNAtoRNA("TTTT")); // 'UUUU'
-console.log(DNAtoRNA("GCAT")); // 'GCAU'
-console.log(DNAtoRNA("GACCGCCGCC")); // 'GACCGCCGCC'
+console.log(sum([1, 5.2, 4, 0, -1])); // 9.2
