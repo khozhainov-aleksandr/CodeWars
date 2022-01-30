@@ -1,10 +1,11 @@
 'use strict';
 
-// Will you make it?
+// Opposites Attract
 
-function zeroFuel(distanceToPump, mpg, fuelLeft) {
-  return (fuelLeft * mpg) >= distanceToPump;
+function lovefunc(flower1, flower2){
+  return flower1 % 2 !== flower2 % 2;
 }
 
-console.log(zeroFuel(50, 25, 2)); // true
-console.log(zeroFuel(100, 50, 1)); // false
+console.log(lovefunc(1,4)); // true
+console.log(lovefunc(2,2)); // false
+console.log(lovefunc(0,0)); // false
