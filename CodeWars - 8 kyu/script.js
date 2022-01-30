@@ -1,9 +1,10 @@
 'use strict';
 
-// Are You Playing Banjo?
+// Will you make it?
 
-function areYouPlayingBanjo(name) {
-  return (name[0].toUpperCase() === 'R') ? `${name} plays banjo` : `${name} does not play banjo`;
+function zeroFuel(distanceToPump, mpg, fuelLeft) {
+  return (fuelLeft * mpg) >= distanceToPump;
 }
 
-console.log(areYouPlayingBanjo('Adam')); // "Adam does not play banjo"
+console.log(zeroFuel(50, 25, 2)); // true
+console.log(zeroFuel(100, 50, 1)); // false
