@@ -1,9 +1,9 @@
 'use strict';
 
-// Sum Arrays
+// Are You Playing Banjo?
 
-function sum(numbers) {
-  return numbers.reduce((sum, el) => (sum + el), 0);
+function areYouPlayingBanjo(name) {
+  return (name[0].toUpperCase() === 'R') ? `${name} plays banjo` : `${name} does not play banjo`;
 }
 
-console.log(sum([1, 5.2, 4, 0, -1])); // 9.2
+console.log(areYouPlayingBanjo('Adam')); // "Adam does not play banjo"
