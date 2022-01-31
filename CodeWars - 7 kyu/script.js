@@ -1,17 +1,12 @@
 'use strict';
 
-// Sum of range
+// We are a little different
 
-function getSumOfRange(start, end) {
-    let arr = [];
-
-    for (let i = start; i <= end; i++) {
-        arr.push(i);
-    }
-    
-    return arr.reduce((sum, el) => (sum + el));
+function getDifference(numbers) {
+    let max = Math.max(...numbers);
+    let min = Math.min(...numbers);
+  
+    return max - min;
 }
 
-console.log(getSumOfRange(1, 10)); // 55
-console.log(getSumOfRange(-5, 5)); // 0
-console.log(getSumOfRange(1, 500)); // 125250
+console.log(getDifference([42, 45, 1, 78, 92, 10])); // 91
