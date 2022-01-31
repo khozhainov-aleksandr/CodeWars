@@ -1,9 +1,17 @@
 'use strict';
 
-// Get the largest number
+// Sum of range
 
-function getLargestNumber(numbers) {
-    return Math.max(...numbers);
+function getSumOfRange(start, end) {
+    let arr = [];
+
+    for (let i = start; i <= end; i++) {
+        arr.push(i);
+    }
+    
+    return arr.reduce((sum, el) => (sum + el));
 }
 
-console.log(getLargestNumber([7, 7, 7, 7.1])); // 7.1
+console.log(getSumOfRange(1, 10)); // 55
+console.log(getSumOfRange(-5, 5)); // 0
+console.log(getSumOfRange(1, 500)); // 125250
