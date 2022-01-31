@@ -1,12 +1,19 @@
 'use strict';
 
-// Password validation
+// Unique names
 
-function validatePassword(password) {
-    return !!password.match(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/g);
+function getUniqNames(names) {
+    return names.filter((el, i) => {
+        return names.indexOf(el) === i;
+    });
 }
 
-console.log(validatePassword('password')); //  === false
-console.log(validatePassword('Admin12')); //  === false
-console.log(validatePassword('Admin123')); //  === true
-console.log(validatePassword('@dmiN122')); //  === false
+console.log(getUniqNames([
+    'Eileen',
+    'Peter',
+    'Jared',
+    'Robert',
+    'Robert',
+    'Robert',
+    'David',
+  ])); // ['Eileen', 'Peter', 'Jared', 'Robert', 'David']
