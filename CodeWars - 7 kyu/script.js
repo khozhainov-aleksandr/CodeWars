@@ -1,12 +1,12 @@
 'use strict';
 
-// We are a little different
+// Password validation
 
-function getDifference(numbers) {
-    let max = Math.max(...numbers);
-    let min = Math.min(...numbers);
-  
-    return max - min;
+function validatePassword(password) {
+    return !!password.match(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}/g);
 }
 
-console.log(getDifference([42, 45, 1, 78, 92, 10])); // 91
+console.log(validatePassword('password')); //  === false
+console.log(validatePassword('Admin12')); //  === false
+console.log(validatePassword('Admin123')); //  === true
+console.log(validatePassword('@dmiN122')); //  === false
