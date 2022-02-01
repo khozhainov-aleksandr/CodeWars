@@ -1,11 +1,12 @@
 'use strict';
 
-// Opposites Attract
+// Simple multiplication
 
-function lovefunc(flower1, flower2){
-  return flower1 % 2 !== flower2 % 2;
+function simpleMultiplication(number) {
+  return (number % 2 === 0) ? number * 8 : number * 9;
 }
 
-console.log(lovefunc(1,4)); // true
-console.log(lovefunc(2,2)); // false
-console.log(lovefunc(0,0)); // false
+console.log(simpleMultiplication(2)); // 16
+console.log(simpleMultiplication(1)); // 9
+console.log(simpleMultiplication(4)); // 32
+console.log(simpleMultiplication(5)); // 45
