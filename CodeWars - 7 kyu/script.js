@@ -3,17 +3,7 @@
 // Unique names
 
 function getUniqNames(names) {
-    return names.filter((el, i) => {
-        return names.indexOf(el) === i;
-    });
+    return names.filter( (element, index) => names.indexOf(element) === index );
 }
 
-console.log(getUniqNames([
-    'Eileen',
-    'Peter',
-    'Jared',
-    'Robert',
-    'Robert',
-    'Robert',
-    'David',
-  ])); // ['Eileen', 'Peter', 'Jared', 'Robert', 'David']
+console.log(getUniqNames(['Eileen', 'Peter', 'Jared', 'Robert', 'Robert', 'Robert', 'David',])); // ['Eileen', 'Peter', 'Jared', 'Robert', 'David']
