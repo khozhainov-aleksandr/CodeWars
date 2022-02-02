@@ -1,11 +1,11 @@
 'use strict';
 
-// Pillars
+// get character from ASCII Value
 
-function pillars(num_pill, dist, width) {
-  if (num_pill < 2) { return 0; }
-  return (((num_pill - 1) * dist * 100) + (num_pill * width)) - (width * 2);
+function getChar(c){
+  return String.fromCharCode(c);
 }
 
-console.log(pillars(2, 20, 25)); // 2000
-console.log(pillars(11, 15, 30)); // 15270
+console.log(getChar(55)); // '7'
+console.log(getChar(56)); // '8'
+console.log(getChar(64)); // '@'
