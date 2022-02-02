@@ -1,11 +1,16 @@
 'use strict';
 
-// get character from ASCII Value
+// Pirates!! Are the Cannons ready!??
 
-function getChar(c){
-  return String.fromCharCode(c);
+function cannonsReady(gunners) {
+  let res = [];
+
+  for(let key in gunners) {
+    res.push(gunners[key]);
+  }
+
+  return res.every(el => el === 'aye') ? 'Fire!' : 'Shiver me timbers!';
 }
 
-console.log(getChar(55)); // '7'
-console.log(getChar(56)); // '8'
-console.log(getChar(64)); // '@'
+console.log(cannonsReady({'Mike':'aye','Joe':'aye','Johnson':'aye','Peter':'aye'}));
+console.log(cannonsReady({'Mike':'aye','Joe':'nay','Johnson':'aye','Peter':'aye'}));
