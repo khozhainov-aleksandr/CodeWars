@@ -1,16 +1,10 @@
 'use strict';
 
-// Pirates!! Are the Cannons ready!??
+// Vowel remover
 
-function cannonsReady(gunners) {
-  let res = [];
-
-  for(let key in gunners) {
-    res.push(gunners[key]);
-  }
-
-  return res.every(el => el === 'aye') ? 'Fire!' : 'Shiver me timbers!';
+function shortcut(string) {
+  return string.replace(/[aeiou]/gi, '');
 }
 
-console.log(cannonsReady({'Mike':'aye','Joe':'aye','Johnson':'aye','Peter':'aye'}));
-console.log(cannonsReady({'Mike':'aye','Joe':'nay','Johnson':'aye','Peter':'aye'}));
+console.log(shortcut('hello')); // 'hll'
+console.log(shortcut('how are you today?')); // 'hw r y tdy?'
