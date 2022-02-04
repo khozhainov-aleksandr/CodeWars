@@ -1,15 +1,10 @@
 'use strict';
 
-// ASCII Total
+// Sentence Smash
 
-function uniTotal(string) {
-  let sum = 0;
-  for (let i = 0; i < string.length; i++) {
-    sum += string[i].charCodeAt();
-  }
-  return sum;
+function smash(words) {
+    return words;
 }
 
-console.log(uniTotal("e")); // 101
-console.log(uniTotal("aaa")); // 291
-console.log(uniTotal("Mary Had A Little Lamb")); // 1873
+console.log(smash(["hello", "world"])); // "hello world"
+console.log(smash(["hello", "amazing", "world"])); // "hello amazing world"
