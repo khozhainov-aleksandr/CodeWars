@@ -3,7 +3,7 @@
 // Sentence Smash
 
 function smash(words) {
-    return words;
+    return words.join(' ').trim();
 }
 
 console.log(smash(["hello", "world"])); // "hello world"
