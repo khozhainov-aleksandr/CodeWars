@@ -1,10 +1,11 @@
 'use strict';
 
-// Sentence Smash
+// BASIC: Making Six Toast.
 
-function smash(words) {
-    return words.join(' ').trim();
+function sixToast(num) {
+    return (num === 0) ? num : Math.abs(num - 6);
 }
 
-console.log(smash(["hello", "world"])); // "hello world"
-console.log(smash(["hello", "amazing", "world"])); // "hello amazing world"
+console.log(sixToast(6)); // 0
+console.log(sixToast(17)); // 11
+console.log(sixToast(3)); // 3
