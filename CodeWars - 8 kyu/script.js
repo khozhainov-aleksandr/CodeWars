@@ -1,11 +1,14 @@
 'use strict';
 
-// BASIC: Making Six Toast.
+// Thinkful - Logic Drills: Traffic light
 
-function sixToast(num) {
-    return (num === 0) ? num : Math.abs(num - 6);
+function updateLight(current) {
+    switch(current) {
+        case 'green': return 'yellow';
+        case 'yellow': return 'red';
+        case 'red': return 'green';
+    }
 }
 
-console.log(sixToast(6)); // 0
-console.log(sixToast(17)); // 11
-console.log(sixToast(3)); // 3
+console.log(updateLight("green")); // yellow
+console.log(updateLight("yellow")); // red
