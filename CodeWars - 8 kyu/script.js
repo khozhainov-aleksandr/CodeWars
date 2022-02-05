@@ -1,14 +1,7 @@
 'use strict';
 
-// Thinkful - Logic Drills: Traffic light
+// Grasshopper - Check for factor
 
-function updateLight(current) {
-    switch(current) {
-        case 'green': return 'yellow';
-        case 'yellow': return 'red';
-        case 'red': return 'green';
-    }
+function checkForFactor (base, factor) {
+    return (base % factor) === 0;
 }
-
-console.log(updateLight("green")); // yellow
-console.log(updateLight("yellow")); // red
