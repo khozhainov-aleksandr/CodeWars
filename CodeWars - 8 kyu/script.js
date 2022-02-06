@@ -1,14 +1,11 @@
 'use strict';
 
-// Well of Ideas - Easy Version
+// Holiday VIII - Duty Free
 
-function well(arr) {
-    let res = 0;
-    arr.filter(el => (el === 'good') ? res += 1 : res);
-    if (res === 0) { return 'Fail!'; }
-    return (res <= 2) ? 'Publish!' : 'I smell a series!';
+function dutyFree(normPrice, discount, hol){
+    return Math.floor(hol / (normPrice * discount / 100));
 }
 
-console.log(well(['bad', 'bad', 'bad'])); // 'Fail!'
-console.log(well(['good', 'bad', 'bad', 'bad', 'bad'])); // 'Publish!'
-console.log(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good'])); // 'I smell a series!'
+console.log(dutyFree(12, 50, 1000)); // 166
+console.log(dutyFree(17, 10, 500)); // 294
+console.log(dutyFree(24, 35, 3000)); // 357
