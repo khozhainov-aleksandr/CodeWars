@@ -1,10 +1,11 @@
 'use strict';
 
-// Multiply numbers
+// Declare arrow function
 
-function multiply(a, b = 1) {
-    return a * b;
-}
+const getString = () => {
+    const jobTitle = 'I am a programmer';
+  
+    return jobTitle;
+};
 
-console.log(multiply(5, 10)); // 50
-console.log(multiply(24)); // 24
+console.log(getString());
