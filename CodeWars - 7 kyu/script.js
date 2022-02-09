@@ -1,20 +1,28 @@
 'use strict';
 
-// Remove female ages
+// Get outdated
 
-function removeFemaleAges(people) {
-    for (let i = 0; i < people.length; i++) {
-        if (people[i].gender === 'female') {
-            delete people[i].age;
-        }
+function getOutdated(robots, newVersion) {
+    const res = [];
+
+    for (let i = 0; i < robots.length; i++) {
+      if (robots[i].coreVersion < newVersion) {
+        res.push(i);
+      }
     }
+
+    return res;
 }
 
-const people = [
-    { name: 'Emma', gender: 'female', age: 19 },
-    { name: 'Avram', gender: 'male', age: 41 },
+const robots = [
+    { coreVersion: 9 },
+    { coreVersion: 13 },
+    { coreVersion: 16 },
+    { coreVersion: 9 },
+    { coreVersion: 14 },
 ];
-
-removeFemaleAges(people);
-
-console.log(people);
+  
+  console.log( getOutdated(robots, 10) );  // [0, 3]
+  console.log( getOutdated(robots, 14) );  // [0, 1, 3]
+  console.log( getOutdated(robots, 8) );  // []
+  console.log( getOutdated(robots, 18) );  // [0, 1, 2, 3, 4]
