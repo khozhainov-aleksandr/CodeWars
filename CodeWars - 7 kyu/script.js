@@ -1,26 +1,20 @@
 'use strict';
 
-// Restore names
+// Remove female ages
 
-function restoreNames(users) {
-    for (let i = 0; i < users.length; i++) {
-        const userName = users[i].fullName.split(' ')[0];
-        users[i].firstName = userName;
+function removeFemaleAges(people) {
+    for (let i = 0; i < people.length; i++) {
+        if (people[i].gender === 'female') {
+            delete people[i].age;
+        }
     }
 }
 
-const users = [
-    {
-        firstName: undefined,
-        lastName: 'Holy',
-        fullName: 'Jack Holy',
-    },
-    {
-        lastName: 'Adams',
-        fullName: 'Mike Adams',
-    },
+const people = [
+    { name: 'Emma', gender: 'female', age: 19 },
+    { name: 'Avram', gender: 'male', age: 41 },
 ];
-  
-restoreNames(users);
 
-console.log(users);
+removeFemaleAges(people);
+
+console.log(people);
