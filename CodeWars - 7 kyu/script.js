@@ -1,28 +1,23 @@
 'use strict';
 
-// Get outdated
+// Count boxes
 
-function getOutdated(robots, newVersion) {
-    const res = [];
+function countBoxes(boxes) {
+    // if (boxes === '') {return {}; }
 
-    for (let i = 0; i < robots.length; i++) {
-      if (robots[i].coreVersion < newVersion) {
-        res.push(i);
-      }
+    const res = {};
+    const arr = boxes.split('');
+    const eachElement = arr.filter( (element, index) => arr.indexOf(element) === index );
+
+    for (let i = 0; i < eachElement.length; i++) {
+        let key = arr.filter((element) => (element === eachElement[i])).length;
+        let value = eachElement[i];
+        res[value] = key;
     }
 
     return res;
 }
 
-const robots = [
-    { coreVersion: 9 },
-    { coreVersion: 13 },
-    { coreVersion: 16 },
-    { coreVersion: 9 },
-    { coreVersion: 14 },
-];
-  
-  console.log( getOutdated(robots, 10) );  // [0, 3]
-  console.log( getOutdated(robots, 14) );  // [0, 1, 3]
-  console.log( getOutdated(robots, 8) );  // []
-  console.log( getOutdated(robots, 18) );  // [0, 1, 2, 3, 4]
+console.log( countBoxes('aabca') );  // { a: 3, b: 1, c: 1 }
+console.log( countBoxes('aaaaca31') );  // { a: 5, c: 1, 3: 1, 1: 1 }
+console.log( countBoxes('') );  // {}
