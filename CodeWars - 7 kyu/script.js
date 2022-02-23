@@ -1,25 +1,11 @@
 'use strict';
 
-// Get robot schema
+// Are in love
 
-function getRobotSchema(robot) {
-    const newScheme = {};
-  
-    for (const key in robot) {
-      const value = key;
-  
-      newScheme[value] = typeof robot[key];
-    }
-  
-    return newScheme;
+function areInLove(flower1, flower2) {
+  return ((flower1 % 2) === 0) !== ((flower2 % 2) === 0);
 }
 
-const robot = {
-    version: 16,
-    name: 'Cleaner 3000',
-    released: true,
-    creator: { name: 'Vlad' },
-};
-
-console.log(robot);
-console.log(getRobotSchema(robot));
+console.log( areInLove(0, 0) );
+console.log( areInLove(1, 4) );
+console.log( areInLove(2, 2) );
