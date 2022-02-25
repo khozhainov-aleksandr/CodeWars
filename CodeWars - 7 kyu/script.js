@@ -1,10 +1,16 @@
 'use strict';
 
-// Shorten to date
+// Sum of sequence
 
-function shortenToDate(longDate) {
-  return longDate.split(',')[0];
+function calcSequenceSum(start, end, step) {
+  let res = 0;
+
+  for (let i = start; i <= end; i += step) {
+    res += i;
+  }
+
+  return res;
 }
 
-console.log( shortenToDate('Friday May 2, 7pm') ); // 'Friday May 2'
-console.log( shortenToDate('Monday January 10, 9am') ); // 'Monday January 10'
+console.log( calcSequenceSum(1, 5, 1) ); // 15
+// console.log( calcSequenceSum(4, 15, 3) ); // 12 // 4 + 7 + 10 + 13
