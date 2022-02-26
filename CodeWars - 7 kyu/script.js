@@ -1,40 +1,14 @@
 'use strict';
 
-// Are robots the same?
+// Color stones
 
-const compareRobots = (robot1, robot2) => {
-  delete robot1.serialNo;
-  delete robot2.serialNo;
+function colorStones(stones) {
+  return stones.split('').filter((element, index, arr) => element === arr[index + 1]).length;
+}
 
-  const x = Object.keys(robot1);
-  const y = Object.keys(robot2);
-
-  if (x.length !== y.length) {
-    return false;
-  };
-
-  for (const i of x) {
-    if (robot1[i] !== robot2[i]) {
-      return false;
-    }
-  }
-
-  return true;
-};
-
-const charlie = { serialNo: 1, chipVer: 12 };
-
-const lordy = { serialNo: 2, chipVer: 12 };
-console.log( compareRobots(charlie, lordy) ); // true
-
-const paul = { serialNo: 3, chipVer: 15 };
-console.log( compareRobots(paul, charlie) ); // false
-
-const mike = { serialNo: 4, chipVer: 12, wheels: 1 };
-console.log( compareRobots(mike, charlie) ); // false
-
-const max = { serialNo: 5, engineVer: 12 };
-console.log( compareRobots(max, charlie) ); // false
-
-const steve = { serialNo: 6 };
-console.log( compareRobots(steve, charlie) ); // false
+console.log( colorStones('RRGB') ); //  === 1 // 'R' нужно убрать; в результате останется 'RGB'
+console.log( colorStones('RRGGB') ); //  === 2 // 'R' и 'G' нужно убрать; в результате останется 'RGB'
+console.log( colorStones('RRRRGB') ); //  === 3 // 'RRR' нужно убрать; в результате останется 'RGB'
+console.log( colorStones('RGBRGBRGGB') ); //  === 1 // 'G' нужно убрать в результате останется 'RGBRGBRGB'
+console.log( colorStones('RGGRGBBRGRR') ); //  === 3 // 'G', 'B' и 'R' нужно убрать; в результате останется 'RGRGBRGR'
+console.log( colorStones('RRRRGGGGBBBB') ); //  === 9 // 'RRR', 'GGG' и 'BBB' нужно убрать; в результате останется 'RGB'
