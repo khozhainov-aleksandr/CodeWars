@@ -1,16 +1,40 @@
 'use strict';
 
-// Sum of sequence
+// Are robots the same?
 
-function calcSequenceSum(start, end, step) {
-  let res = 0;
+const compareRobots = (robot1, robot2) => {
+  delete robot1.serialNo;
+  delete robot2.serialNo;
 
-  for (let i = start; i <= end; i += step) {
-    res += i;
+  const x = Object.keys(robot1);
+  const y = Object.keys(robot2);
+
+  if (x.length !== y.length) {
+    return false;
+  };
+
+  for (const i of x) {
+    if (robot1[i] !== robot2[i]) {
+      return false;
+    }
   }
 
-  return res;
-}
+  return true;
+};
 
-console.log( calcSequenceSum(1, 5, 1) ); // 15
-// console.log( calcSequenceSum(4, 15, 3) ); // 12 // 4 + 7 + 10 + 13
+const charlie = { serialNo: 1, chipVer: 12 };
+
+const lordy = { serialNo: 2, chipVer: 12 };
+console.log( compareRobots(charlie, lordy) ); // true
+
+const paul = { serialNo: 3, chipVer: 15 };
+console.log( compareRobots(paul, charlie) ); // false
+
+const mike = { serialNo: 4, chipVer: 12, wheels: 1 };
+console.log( compareRobots(mike, charlie) ); // false
+
+const max = { serialNo: 5, engineVer: 12 };
+console.log( compareRobots(max, charlie) ); // false
+
+const steve = { serialNo: 6 };
+console.log( compareRobots(steve, charlie) ); // false
