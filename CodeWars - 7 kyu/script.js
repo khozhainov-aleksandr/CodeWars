@@ -1,9 +1,16 @@
 'use strict';
 
-// Square digits
+// Mumbling
 
-function squareDigits(num) {
-  return Number(String(num).split('').map(el => Number(el) * Number(el)).join(''));
+function mumble(letters) {
+    return letters
+    .toLowerCase()
+    .split('')
+    .map((element, index, arr) => {
+      return `${arr[index].toUpperCase()}${element.repeat(index)}`;
+    })
+    .join('-');
 }
 
-console.log( squareDigits(58)  ); // === 2564
+console.log( mumble('abcd') ); // 'A-Bb-Ccc-Dddd'
+console.log( mumble('RqaEzty') ); // 'R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy'
