@@ -1,16 +1,16 @@
 'use strict';
 
-// Mumbling
+// Get middle character
 
-function mumble(letters) {
-    return letters
-    .toLowerCase()
-    .split('')
-    .map((element, index, arr) => {
-      return `${arr[index].toUpperCase()}${element.repeat(index)}`;
-    })
-    .join('-');
+function getMiddleChar(word) {
+  if (word.length % 2 === 0) {
+    return word.slice((word.length / 2 - 1), (word.length / 2 + 1));
+  } else {
+    return word.slice((Math.floor(word.length / 2)), (Math.floor(word.length / 2) + 1));
+  }
 }
 
-console.log( mumble('abcd') ); // 'A-Bb-Ccc-Dddd'
-console.log( mumble('RqaEzty') ); // 'R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy'
+console.log( getMiddleChar('test') ); // = 'es'
+console.log( getMiddleChar('testing') ); // = 't'
+console.log( getMiddleChar('middle') ); // = 'dd'
+console.log( getMiddleChar('A') ); // = 'A'
