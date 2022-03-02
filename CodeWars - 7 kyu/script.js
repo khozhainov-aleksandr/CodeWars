@@ -1,21 +1,18 @@
 'use strict';
 
-// Sum of numbers
+// Counting duplicates
 
-function getSum(a, b) {
-    if (a === b) {return a;}
+function countDuplicates(str) {
+  const arrStr = str.toLowerCase().split('');
+  const res = {};
 
-    const min = Math.min(a, b);
-    const max = Math.max(a, b);
-    let res = 0;
+  arrStr.forEach(element => {
+    res[element] = (res[element] || 0) + 1;
+  });
 
-    for (let i = min; i <= max; i++ ) {
-        res += i;
-    }
-
-    return res;
+  return Object.values(res).filter(el => el > 1).length;
 }
 
-console.log( getSum(1, 3) ); // 6 // 1 + 2 + 3 = 6
-// console.log( getSum(2, -3) ); // -3 // -3 + -2 + -1 + 0 + 1 + 2 = -3
-// console.log( getSum(5, 5) ); // 5 // Поскольку оба числа одинаковы
+console.log(countDuplicates('abcde')); // 0 // ни один символ не повторяется более одного раза
+console.log(countDuplicates('aabbcde')); // 2 // 'a' и 'b' встречаются более одного раза
+console.log(countDuplicates('aA11')); // 2 // 'a' и '1' встречаются более одного раза
