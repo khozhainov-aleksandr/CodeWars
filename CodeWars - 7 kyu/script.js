@@ -1,16 +1,21 @@
 'use strict';
 
-// Get middle character
+// Sum of numbers
 
-function getMiddleChar(word) {
-  if (word.length % 2 === 0) {
-    return word.slice((word.length / 2 - 1), (word.length / 2 + 1));
-  } else {
-    return word.slice((Math.floor(word.length / 2)), (Math.floor(word.length / 2) + 1));
-  }
+function getSum(a, b) {
+    if (a === b) {return a;}
+
+    const min = Math.min(a, b);
+    const max = Math.max(a, b);
+    let res = 0;
+
+    for (let i = min; i <= max; i++ ) {
+        res += i;
+    }
+
+    return res;
 }
 
-console.log( getMiddleChar('test') ); // = 'es'
-console.log( getMiddleChar('testing') ); // = 't'
-console.log( getMiddleChar('middle') ); // = 'dd'
-console.log( getMiddleChar('A') ); // = 'A'
+console.log( getSum(1, 3) ); // 6 // 1 + 2 + 3 = 6
+// console.log( getSum(2, -3) ); // -3 // -3 + -2 + -1 + 0 + 1 + 2 = -3
+// console.log( getSum(5, 5) ); // 5 // Поскольку оба числа одинаковы
