@@ -1,26 +1,19 @@
 'use strict';
 
-// Fix string
+// Detect pangram
 
-function fixString(str) {
-  let upper = 0;
-  let lower = 0;
+function isPangram(str) {
+  const alphabet = 'AEIOUYBCDFGHJKLMNPQRSTVWXZ'.split('').sort();
+  const arrStr = str.replace(/[^a-z]/gi, '').toUpperCase().split('').sort();
+  const filterDuplicateStr = arrStr
+    .filter((element, index) => arrStr.indexOf(element) === index);
+  const x = alphabet
+    .filter((el, i) => filterDuplicateStr.indexOf(el) !== i).length;
 
-  str.split('').forEach(element => {
-    if (element.toUpperCase() === element && element !== ' ') {
-      upper++;
-    } else if (element !== ' ') {
-      lower++;
-    }
-  });
-
-  if (lower >= upper) {
-    return str.toLowerCase();
-  } else {
-    return str.toUpperCase();
-  }
+  return x === 0;
 }
 
-console.log( fixString('Mate Academy') ); // 'mate academy'
-console.log( fixString('Mate ACADEmy') ); // 'MATE ACADEMY'
-console.log( fixString('maTE') ); // 'mate'
+console.log( isPangram('abcdefghijklmnopqrstuvwxyz') ); // true
+console.log( isPangram('Sphinx of black quartz, judge my vow.') ); // true
+console.log( isPangram('AbCdEfGhIjKlMzxWvUtSrQpOn') ); // false // 'y' is missing
+console.log( isPangram('Detect Pangram') ); // false 
