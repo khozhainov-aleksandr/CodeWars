@@ -1,19 +1,17 @@
 'use strict';
 
-// Detect pangram
+// Max and min
 
-function isPangram(str) {
-  const alphabet = 'AEIOUYBCDFGHJKLMNPQRSTVWXZ'.split('').sort();
-  const arrStr = str.replace(/[^a-z]/gi, '').toUpperCase().split('').sort();
-  const filterDuplicateStr = arrStr
-    .filter((element, index) => arrStr.indexOf(element) === index);
-  const x = alphabet
-    .filter((el, i) => filterDuplicateStr.indexOf(el) !== i).length;
+function maxAndMin(numbersString) {
+  const x = numbersString.split(' ').filter(el => el !== '').map(el => Number(el));
+  const max = Math.max(...x);
+  const min = Math.min(...x);
 
-  return x === 0;
+  return `${max} ${min}`;
 }
 
-console.log( isPangram('abcdefghijklmnopqrstuvwxyz') ); // true
-console.log( isPangram('Sphinx of black quartz, judge my vow.') ); // true
-console.log( isPangram('AbCdEfGhIjKlMzxWvUtSrQpOn') ); // false // 'y' is missing
-console.log( isPangram('Detect Pangram') ); // false 
+console.log( maxAndMin('1   2 3 4 5') ); // '5 1'
+console.log( maxAndMin('1 9 3   4 -5') ); // '9 -5'
+console.log( maxAndMin('8 8') ); // '8 8'
+
+console.log( maxAndMin('2') ); // '2 2'
