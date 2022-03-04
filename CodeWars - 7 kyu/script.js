@@ -1,17 +1,22 @@
 'use strict';
 
-// Max and min
+// Row weights
 
-function maxAndMin(numbersString) {
-  const x = numbersString.split(' ').filter(el => el !== '').map(el => Number(el));
-  const max = Math.max(...x);
-  const min = Math.min(...x);
+function getRowWeights(array) {
+  let one = 0;
+  let two = 0;
 
-  return `${max} ${min}`;
+  array.forEach((element, index) => {
+    if (index % 2 === 0) {
+      one += element;
+    } else {
+      two += element;
+    }
+  });
+
+  return [one, two];
 }
 
-console.log( maxAndMin('1   2 3 4 5') ); // '5 1'
-console.log( maxAndMin('1 9 3   4 -5') ); // '9 -5'
-console.log( maxAndMin('8 8') ); // '8 8'
-
-console.log( maxAndMin('2') ); // '2 2'
+console.log( getRowWeights([10]) ); // [10, 0]
+console.log( getRowWeights([10, 85, 90]) ); // [100, 85]
+console.log( getRowWeights([8, 5, 9, 3]) ); // [17, 8]
