@@ -1,22 +1,32 @@
 'use strict';
 
-// Count matching socks
+// Array leaders
 
-function countMatchingSocks(colors) {
-  const obj = {};
+function getLeaders(numbers) {
+  const res = [];
 
-  colors.forEach(element => {
-    obj[element] = (obj[element] || 0) + 1;
-  });
+  for (let i = 0; i < numbers.length; i++) {
+    let sum = 0;
 
-  let sum = Object.values(obj)
-    .filter(el => el > 1)
-    .reduce((sum, el) => sum + el, 0);
+    for (let j = i+1; j < numbers.length; j++) {
+      sum += numbers[j];
+    }
 
-  return Math.trunc(sum / 2);
+    if (numbers[i] > sum) { 
+      res.push(numbers[i]);
+    }
+  }
+
+  return res;
 }
 
-console.log( countMatchingSocks([10, 10]) ); // - одна пара носков цвета 10.
-console.log( countMatchingSocks([2, 2, 2, 2, 2]) ); // - две пары носков цвета 2.
-console.log( countMatchingSocks([10, 20, 30, 40, 50, 60]) ); // - все носки разного цвета, ни одной пары.
-console.log( countMatchingSocks([10, 20, 30, 10, 20, 60]) ); // - 2 пары, одна цвета 10, вторая - 20.
+console.log( getLeaders([1, 2, 3, 4, 0]) ); // === [4]
+
+// 4 is greater than the sum all the elements to its right side
+// The last element 0 is equal to right sum of its elements
+
+console.log( getLeaders([16, 17, 4, 3, 5, 2]) ); // === [17, 5, 2]
+
+// 17 is greater than the sum all the elements to its right side
+// 5 is greater than the sum all the elements to its right side
+// The last element 2 is greater than the sum of its right elements
