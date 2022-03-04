@@ -1,32 +1,28 @@
 'use strict';
 
-// Array leaders
+// Product array
 
-function getLeaders(numbers) {
+function getArrayProduct(numbers) {
   const res = [];
 
   for (let i = 0; i < numbers.length; i++) {
-    let sum = 0;
+    const sumAll = numbers
+      .filter(el => (numbers[i] !== el))
+      .reduce((sum, el) => (sum * el));
 
-    for (let j = i+1; j < numbers.length; j++) {
-      sum += numbers[j];
-    }
-
-    if (numbers[i] > sum) { 
-      res.push(numbers[i]);
-    }
+    res.push(sumAll);
   }
 
   return res;
 }
 
-console.log( getLeaders([1, 2, 3, 4, 0]) ); // === [4]
+console.log( getArrayProduct([1, 5, 2]) ); // === [10,2,5]
+// The first element 10 is the product of all array's elements except the first element 1
+// The second element 2 is the product of all array's elements except the second element 5
+// The third element 5 is the product of all array's elements except the third element 2
 
-// 4 is greater than the sum all the elements to its right side
-// The last element 0 is equal to right sum of its elements
+console.log( getArrayProduct([12, 20]) ); // === [20,12]
+// The first element in array 20 is the product of all array's elements except the first element
+// The second element 12 is the product of all array's elements except the second element
 
-console.log( getLeaders([16, 17, 4, 3, 5, 2]) ); // === [17, 5, 2]
-
-// 17 is greater than the sum all the elements to its right side
-// 5 is greater than the sum all the elements to its right side
-// The last element 2 is greater than the sum of its right elements
+// console.log( getArrayProduct([9, 9, 9, 9, 9]) ); // [6561, 6561, 6561, 6561, 6561]
