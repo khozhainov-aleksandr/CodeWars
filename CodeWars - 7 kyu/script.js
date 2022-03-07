@@ -1,20 +1,22 @@
 'use strict';
 
-// Add numbers from object
+// Population growth
 
-const object = {
-  foo: 'js',
-  bar: 'fe',
-  boo: 3,
-  spam: 10,
-  egg: 11,
-};
+function getYears(initial, percent, migration, target) {
+  const clearPercent = percent / 100;
+  let yearPer = initial;
+  let res = 0;
 
-function addNumbers(object) {
-  return Object
-    .values(object)
-    .filter(el => typeof(el) === 'number')
-    .reduce((sum, el) => sum + el);
+  while (yearPer < target) {
+    yearPer = Math.floor(yearPer + yearPer * clearPercent + migration);
+    res += 1;
+  }
+
+  return res;
 }
 
-console.log( addNumbers(object) ); // return 24
+
+console.log( getYears(200, 8, 15, 231) ); // = 1;
+console.log( getYears(1000, 2, 50, 1200) ); // = 3;
+console.log( getYears(1500, 5, 100, 5000) ); // = 15;
+console.log( getYears(600, 3, 0, 1000) ); // = 18;
