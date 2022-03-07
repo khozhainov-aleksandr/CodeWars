@@ -1,22 +1,16 @@
 'use strict';
 
-// Population growth
+// Count letters in string
 
-function getYears(initial, percent, migration, target) {
-  const clearPercent = percent / 100;
-  let yearPer = initial;
-  let res = 0;
+function countLettersInString(str) {
+  const res = {};
 
-  while (yearPer < target) {
-    yearPer = Math.floor(yearPer + yearPer * clearPercent + migration);
-    res += 1;
-  }
+  str.split('').forEach(element => {
+    res[element] = (res[element] || 0) + 1;
+  });
 
   return res;
 }
 
-
-console.log( getYears(200, 8, 15, 231) ); // = 1;
-console.log( getYears(1000, 2, 50, 1200) ); // = 3;
-console.log( getYears(1500, 5, 100, 5000) ); // = 15;
-console.log( getYears(600, 3, 0, 1000) ); // = 18;
+console.log( countLettersInString('arithmetics') ); 
+// => {"a": 1, "c": 1, "e": 1, "h": 1, "i": 2, "m": 1, "r": 1, "s": 1, "t": 2}
