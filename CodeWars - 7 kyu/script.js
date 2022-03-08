@@ -1,27 +1,10 @@
 'use strict';
 
-// Sum in row
+// Largest pair sum in array
 
-function sumInRow(n) {
-  if (Math.sign(n) === -1) {
-    return 0;
-  }
-
-  const lastNumber = n * n + n - 1;
-  const res = [];
-
-  for (let i = 1; i <= lastNumber; i++) {
-    if (i % 2 !== 0) {
-      res.push(i);
-    }
-  }
-
-  return res
-    .reverse()
-    .slice(0, n)
-    .reverse()
-    .reduce((sum, el) => sum + el, 0);
+function largestPairSum (numbers) {
+  return numbers.sort((a,b)=> b-a).slice(0, 2).reduce((sum,el)=> sum+el,0);
 }
 
-console.log( sumInRow(1) ); // 1
-console.log( sumInRow(2) ); // 8
+console.log( largestPairSum([10, 14, 2, 23, 19]) ); // 42 (= 23 + 19)
+console.log( largestPairSum([99, 2, 2, 23, 19]) ); // 122 (= 99 + 23)
