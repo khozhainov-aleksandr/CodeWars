@@ -1,10 +1,21 @@
 'use strict';
 
-// Largest pair sum in array
+// Jewels and stones
 
-function largestPairSum (numbers) {
-  return numbers.sort((a,b)=> b-a).slice(0, 2).reduce((sum,el)=> sum+el,0);
+function countJewelsInStones(jewels, stones) {
+  const jewelsArr = jewels.split('');
+  const stonesArr = stones.split('');
+  const res = [];
+
+  jewelsArr.forEach(element => {
+    const x = stonesArr.filter(el => el === element);
+    res.push(...x);
+  });
+
+  return res.length;
 }
 
-console.log( largestPairSum([10, 14, 2, 23, 19]) ); // 42 (= 23 + 19)
-console.log( largestPairSum([99, 2, 2, 23, 19]) ); // 122 (= 99 + 23)
+console.log( countJewelsInStones('aA', 'aAAbbbb') ); // === 3
+console.log( countJewelsInStones('dDfFgG', 'dfgDFGdfg') ); // === 9
+console.log( countJewelsInStones('bnm', 'BBNNmm') ); // === 2
+console.log( countJewelsInStones('poiuy', 'zxcvb') ); // === 0
