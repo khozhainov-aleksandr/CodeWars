@@ -1,16 +1,27 @@
 'use strict';
 
-// Count letters in string
+// Sum in row
 
-function countLettersInString(str) {
-  const res = {};
+function sumInRow(n) {
+  if (Math.sign(n) === -1) {
+    return 0;
+  }
 
-  str.split('').forEach(element => {
-    res[element] = (res[element] || 0) + 1;
-  });
+  const lastNumber = n * n + n - 1;
+  const res = [];
 
-  return res;
+  for (let i = 1; i <= lastNumber; i++) {
+    if (i % 2 !== 0) {
+      res.push(i);
+    }
+  }
+
+  return res
+    .reverse()
+    .slice(0, n)
+    .reverse()
+    .reduce((sum, el) => sum + el, 0);
 }
 
-console.log( countLettersInString('arithmetics') ); 
-// => {"a": 1, "c": 1, "e": 1, "h": 1, "i": 2, "m": 1, "r": 1, "s": 1, "t": 2}
+console.log( sumInRow(1) ); // 1
+console.log( sumInRow(2) ); // 8
