@@ -1,21 +1,29 @@
 'use strict';
 
-// Jewels and stones
+// Fibonacci number
 
-function countJewelsInStones(jewels, stones) {
-  const jewelsArr = jewels.split('');
-  const stonesArr = stones.split('');
-  const res = [];
+function getFibonacciNumber(n) {
+    if (n === 0) {
+      return 0;
+    }
 
-  jewelsArr.forEach(element => {
-    const x = stonesArr.filter(el => el === element);
-    res.push(...x);
-  });
+    let a = 1;
+    let b = 1;
 
-  return res.length;
-}
+    for (let i = 3; i <= n; i++) {
+      const c = a + b;
 
-console.log( countJewelsInStones('aA', 'aAAbbbb') ); // === 3
-console.log( countJewelsInStones('dDfFgG', 'dfgDFGdfg') ); // === 9
-console.log( countJewelsInStones('bnm', 'BBNNmm') ); // === 2
-console.log( countJewelsInStones('poiuy', 'zxcvb') ); // === 0
+      a = b;
+      b = c;
+    }
+
+    return b;
+  }
+
+console.log( getFibonacciNumber(0) ); // === 0
+console.log( getFibonacciNumber(1) ); // === 1
+console.log( getFibonacciNumber(2) ); // === 1
+console.log( getFibonacciNumber(3) ); // === 2
+console.log( getFibonacciNumber(4) ); // === 3
+console.log( getFibonacciNumber(5) ); // === 5
+console.log( getFibonacciNumber(10) ); // === 55
