@@ -1,29 +1,27 @@
 'use strict';
 
-// Fibonacci number
+// Valid palindrome
 
-function getFibonacciNumber(n) {
-    if (n === 0) {
-      return 0;
-    }
+function isPalindrome(str) {
+  const filterStr = str
+    .toLowerCase()
+    .split('')
+    .filter(el => (
+      el !== ' ' && 
+      el !== ',' &&
+      el !== '.' &&
+      el !== '?' &&
+      el !== '!' &&
+      el !== ':' &&
+      el !== ';'
+    ));
 
-    let a = 1;
-    let b = 1;
+  return filterStr.join('') === filterStr.reverse().join('');
+}
 
-    for (let i = 3; i <= n; i++) {
-      const c = a + b;
-
-      a = b;
-      b = c;
-    }
-
-    return b;
-  }
-
-console.log( getFibonacciNumber(0) ); // === 0
-console.log( getFibonacciNumber(1) ); // === 1
-console.log( getFibonacciNumber(2) ); // === 1
-console.log( getFibonacciNumber(3) ); // === 2
-console.log( getFibonacciNumber(4) ); // === 3
-console.log( getFibonacciNumber(5) ); // === 5
-console.log( getFibonacciNumber(10) ); // === 55
+console.log( isPalindrome('madam') ); // === true
+console.log( isPalindrome('Kayak') ); // === true // регистр нужно игнорировать
+console.log( isPalindrome('b2b') ); // === true
+console.log( isPalindrome('Was it a cat I saw?') ); // === true // пробелы и пунктуацию нужно игнорировать
+console.log( isPalindrome('hello') ); // === false // 'hello' справа налево - это 'olleh', поэтому это не палиндром
+console.log( isPalindrome('1noon2') ); // === false // '1noon2' справа налево - это '2noon', поэтому это не палиндром
