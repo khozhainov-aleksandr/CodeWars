@@ -1,27 +1,19 @@
 'use strict';
 
-// Valid palindrome
+// Vowels count
 
-function isPalindrome(str) {
-  const filterStr = str
-    .toLowerCase()
-    .split('')
-    .filter(el => (
-      el !== ' ' && 
-      el !== ',' &&
-      el !== '.' &&
-      el !== '?' &&
-      el !== '!' &&
-      el !== ':' &&
-      el !== ';'
-    ));
+function countVowels(str) {
+  const x = ['a', 'e', 'i', 'o', 'u'];
+  let res = 0;
 
-  return filterStr.join('') === filterStr.reverse().join('');
+  x.forEach(element => {
+    res += str.split('').filter(el => element === el).length;
+  });
+
+  return res;
 }
 
-console.log( isPalindrome('madam') ); // === true
-console.log( isPalindrome('Kayak') ); // === true // регистр нужно игнорировать
-console.log( isPalindrome('b2b') ); // === true
-console.log( isPalindrome('Was it a cat I saw?') ); // === true // пробелы и пунктуацию нужно игнорировать
-console.log( isPalindrome('hello') ); // === false // 'hello' справа налево - это 'olleh', поэтому это не палиндром
-console.log( isPalindrome('1noon2') ); // === false // '1noon2' справа налево - это '2noon', поэтому это не палиндром
+console.log( countVowels('hello world') ); // === 3
+console.log( countVowels('ooooo') ); // === 5
+console.log( countVowels('qwrtp') ); // === 0
+console.log( countVowels('gym') ); // === 0 // 'y' не считается гласной
