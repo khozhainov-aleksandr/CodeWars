@@ -1,17 +1,17 @@
 'use strict';
 
-// Calculate averages
+// Get lowest sum
 
-const calculator = {
-  average: function(...res) {
-    if (res.toString() === '') {
-      return 0;
-    }
+function getMinSum(nums) {
+  if (nums.length <= 1) {
+    return NaN;
+  }
 
-    return res.reduce((sum, el) => sum + el) / res.length;
-  },
-};
+  const x = nums.sort((a, b) => a - b);
 
-console.log( calculator.average() ); // === 0
-console.log( calculator.average(1, 2, 3) ); // === 2
-console.log( calculator.average(-3, -1, 0, 1) ); // === -0.75
+  return x[0] + x[1];
+}
+
+console.log( getMinSum([5]) ); // === NaN
+console.log( getMinSum([1, 2]) ); // === 3
+console.log( getMinSum([15, 28, 4, 2, 43]) ); // === 6
