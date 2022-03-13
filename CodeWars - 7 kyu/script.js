@@ -1,17 +1,20 @@
 'use strict';
 
-// Get lowest sum
+// Contain rotations
 
-function getMinSum(nums) {
-  if (nums.length <= 1) {
-    return NaN;
+function containRotations(str, arr) {
+  const allStrInArr = [];
+
+  for (let i = 0; i < str.length; i++) {
+    const reverse = str.slice(i) + str.slice(0, i);
+
+    allStrInArr.push(reverse);
   }
 
-  const x = nums.sort((a, b) => a - b);
-
-  return x[0] + x[1];
+  return arr.filter(i => allStrInArr.includes(i)).length === allStrInArr.length;
 }
 
-console.log( getMinSum([5]) ); // === NaN
-console.log( getMinSum([1, 2]) ); // === 3
-console.log( getMinSum([15, 28, 4, 2, 43]) ); // === 6
+console.log( containRotations('', []) ); // === true
+console.log( containRotations('abc', []) ); // === false
+console.log( containRotations('stRing', ['stRing', 'gstRin', 'ngstRi', 'ingstR', 'Ringst', 'TwshnUh', 'tRings']) ); // === true
+console.log( containRotations('Word', ['Word', 'dWor', 'rdoW', 'DroW', 'rrWd']) ); // === false // все вращения строки 'Word' - ['Word', 'ordW', 'rdWo', 'dWor']
