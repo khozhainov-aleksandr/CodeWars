@@ -1,24 +1,19 @@
 'use strict';
 
-// Maskify string
+// Move zeros
 
-function maskifyStr(str) {
-  const rep = str.length - 4;
-  const lastNum = str.split('').reverse().slice(0, 4).reverse().join('');
-  let sharp = '';
+function moveZeros(arr) {
+  const noZero = arr.filter(el => el !== 0);
+  const rep = arr.length - noZero.length;
+  const res = noZero;
 
   for (let i = 0; i < rep; i++) {
-    sharp += '#';
+    res.push(0);
   }
 
-  if (str.length > 4) {
-    return sharp + lastNum;
-  } else {
-    return str;
-  }
+  return res;
 }
 
-console.log( maskifyStr('') ); // === ''
-console.log( maskifyStr('1') ); // === '1'
-console.log( maskifyStr('1111') ); // === '1111'
-console.log( maskifyStr('Skippy1234') ); // === '######1234'
+console.log( moveZeros([0]) ); // === [0]
+console.log( moveZeros([0, 0, 1, 2]) ); // === [1, 2, 0, 0]
+console.log( moveZeros([true, 0, 'abc', '1', 12]) ); // === [true, 'abc', '1', 12, 0]
