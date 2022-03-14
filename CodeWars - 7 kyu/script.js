@@ -1,20 +1,24 @@
 'use strict';
 
-// Contain rotations
+// Maskify string
 
-function containRotations(str, arr) {
-  const allStrInArr = [];
+function maskifyStr(str) {
+  const rep = str.length - 4;
+  const lastNum = str.split('').reverse().slice(0, 4).reverse().join('');
+  let sharp = '';
 
-  for (let i = 0; i < str.length; i++) {
-    const reverse = str.slice(i) + str.slice(0, i);
-
-    allStrInArr.push(reverse);
+  for (let i = 0; i < rep; i++) {
+    sharp += '#';
   }
 
-  return arr.filter(i => allStrInArr.includes(i)).length === allStrInArr.length;
+  if (str.length > 4) {
+    return sharp + lastNum;
+  } else {
+    return str;
+  }
 }
 
-console.log( containRotations('', []) ); // === true
-console.log( containRotations('abc', []) ); // === false
-console.log( containRotations('stRing', ['stRing', 'gstRin', 'ngstRi', 'ingstR', 'Ringst', 'TwshnUh', 'tRings']) ); // === true
-console.log( containRotations('Word', ['Word', 'dWor', 'rdoW', 'DroW', 'rrWd']) ); // === false // все вращения строки 'Word' - ['Word', 'ordW', 'rdWo', 'dWor']
+console.log( maskifyStr('') ); // === ''
+console.log( maskifyStr('1') ); // === '1'
+console.log( maskifyStr('1111') ); // === '1111'
+console.log( maskifyStr('Skippy1234') ); // === '######1234'
