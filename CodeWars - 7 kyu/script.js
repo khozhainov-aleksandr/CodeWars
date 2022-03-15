@@ -1,19 +1,20 @@
 'use strict';
 
-// Move zeros
+// Sum of multiples
 
-function moveZeros(arr) {
-  const noZero = arr.filter(el => el !== 0);
-  const rep = arr.length - noZero.length;
-  const res = noZero;
+function sumOfMultiples(num) {
+  const res = [];
 
-  for (let i = 0; i < rep; i++) {
-    res.push(0);
+  for (let i = 0; i < num; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      res.push(i);
+    }
   }
 
-  return res;
+  return res.reduce((sum , el)=> sum + el, 0);
 }
 
-console.log( moveZeros([0]) ); // === [0]
-console.log( moveZeros([0, 0, 1, 2]) ); // === [1, 2, 0, 0]
-console.log( moveZeros([true, 0, 'abc', '1', 12]) ); // === [true, 'abc', '1', 12, 0]
+console.log( sumOfMultiples(-1) ); // === 0
+console.log( sumOfMultiples(2) ); // === 0
+console.log( sumOfMultiples(10) ); // === 14 // 3 + 5 + 6 + 9 = 23
+console.log( sumOfMultiples(12) ); // === 33 // 3 + 5 + 6 + 9 + 10 = 33
