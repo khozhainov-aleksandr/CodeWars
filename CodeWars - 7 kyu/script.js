@@ -1,20 +1,34 @@
 'use strict';
 
-// Sum of multiples
+// Duplicate encoder
 
-function sumOfMultiples(num) {
-  const res = [];
+function encodeDuplicates(word) {
+  const arrStr = word.toLowerCase().split('');
+  const arr = [];
+  const obj = {};
 
-  for (let i = 0; i < num; i++) {
-    if (i % 3 === 0 || i % 5 === 0) {
-      res.push(i);
+  arrStr.forEach(el => {
+    obj[el] = (obj[el] || 0) + 1;
+  });
+
+  const objToArr = Object.entries(obj);
+
+  for (let i = 0; i < arrStr.length; i++) {
+    for (let j = 0; j < objToArr.length; j++) {
+      if (arrStr[i] === objToArr[j][0]) {
+        if (objToArr[j][1] >= 2) {
+          arr.push('y');
+        } else {
+          arr.push('x');
+        }
+      }
     }
   }
 
-  return res.reduce((sum , el)=> sum + el, 0);
+  return arr.join('');
 }
 
-console.log( sumOfMultiples(-1) ); // === 0
-console.log( sumOfMultiples(2) ); // === 0
-console.log( sumOfMultiples(10) ); // === 14 // 3 + 5 + 6 + 9 = 23
-console.log( sumOfMultiples(12) ); // === 33 // 3 + 5 + 6 + 9 + 10 = 33
+console.log( encodeDuplicates('get') ); // === 'xxx'
+console.log( encodeDuplicates('google') ); // === 'yyyyxx'
+console.log( encodeDuplicates('David') ); // === 'yxxxy'
+console.log( encodeDuplicates('mama') ); // === 'yyyy'
