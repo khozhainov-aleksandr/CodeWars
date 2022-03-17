@@ -1,3 +1,46 @@
 body {
   margin: 0;
 }
+
+.catalog {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, minmax(100px, 1fr));
+  gap: 20px;
+
+  max-width: 1200px;
+  min-width: 200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  border: 2px solid black;
+}
+
+.card {
+  box-sizing: border-box;
+  height: 150px;
+  border: 1px solid blue;
+  background-color: yellowgreen;
+
+  border: 2px dashed black;
+}
+
+@media (min-width: 480px) {
+  .catalog {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .catalog {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    gap: 40px;
+  }
+}
