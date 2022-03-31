@@ -1,16 +1,47 @@
 'use strict';
 
-// Generate chart
+// Calculate cost
 
-function generateChart(statistics) {
-  const degrees = 360;
-  const totalAmountRobots = Object.values(statistics).reduce((sum, el) => (sum + el), 0);
-  const arrRobotsInDegrees = Object.entries(statistics)
-    .map(element => [element[0], Math.round(degrees * (element[1] * 100 / totalAmountRobots) / 100)])
+function calculateCost(bucket, products) {
+  const objPrice = {};
+  let quantity = 0;
+  let price = 0;
+  let totalPrice = 0;
 
-  return Object.fromEntries(arrRobotsInDegrees);
+  for (const key in products) {
+    Object.assign(objPrice, products[key]);
+  }
+
+  for (const keyBucket in bucket) {
+    quantity = bucket[keyBucket];
+
+    for (const keyObjPrice in objPrice) {
+
+      if (keyObjPrice === keyBucket) {
+        price = objPrice[keyObjPrice];
+      }
+    }
+
+    totalPrice += quantity * price;
+  }
+
+  return totalPrice;
 }
 
-console.log( generateChart({ cleaner: 2, driver: 8 }) ); // === { cleaner: 72, driver: 288 }
-console.log( generateChart({ cleaner: 2, driver: 8, washer: 14 }) ); // === { cleaner: 30, driver: 120, washer: 210 }
-console.log( generateChart({ cleaner: 1 }) ); // === { cleaner: 360 }
+const bucket = {
+  display: 20,
+  wheel: 100,
+  cpu: 40,
+}
+
+const products = {
+  amazobot: {
+    wheel: 12.5,
+  },
+  robozetka: {
+    display: 56.2,
+    cpu: 150,
+  },
+}
+
+console.log( calculateCost(bucket, products) ); // === 8374
