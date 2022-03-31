@@ -1,26 +1,16 @@
 'use strict';
 
-// Inverse robot
+// Generate chart
 
-function inverseRobot(robot) {
-  const arr = Object.entries(robot);
-  const duplicateValues = {};
+function generateChart(statistics) {
+  const degrees = 360;
+  const totalAmountRobots = Object.values(statistics).reduce((sum, el) => (sum + el), 0);
+  const arrRobotsInDegrees = Object.entries(statistics)
+    .map(element => [element[0], Math.round(degrees * (element[1] * 100 / totalAmountRobots) / 100)])
 
-  arr.forEach(element => {
-    duplicateValues[element[1]] = (duplicateValues[element[1]] || 0) + 1;
-  });
-
-  const amountDuplicateValues = Object.values(duplicateValues);
-  if (amountDuplicateValues.some(el => el > 1)) {
-    return null;
-  }
-
-  const reverseKeyAndValue = arr.map(element => [element[1], element[0]]).reverse();
-  return Object.fromEntries(reverseKeyAndValue);
+  return Object.fromEntries(arrRobotsInDegrees);
 }
 
-const kolli = { Kolli: 'name', 123: 'chipVer', 3: 'wheels' };
-const robert = { Robert: 'name', 123: 'chipVer', Alex: 'surname', 113: 'chipVer' };
-
-console.log( inverseRobot(robert) ); // === null
-console.log( inverseRobot(kolli) ); // === { name: 'Kolli', chipVer: '123', wheels: '3' }
+console.log( generateChart({ cleaner: 2, driver: 8 }) ); // === { cleaner: 72, driver: 288 }
+console.log( generateChart({ cleaner: 2, driver: 8, washer: 14 }) ); // === { cleaner: 30, driver: 120, washer: 210 }
+console.log( generateChart({ cleaner: 1 }) ); // === { cleaner: 360 }
