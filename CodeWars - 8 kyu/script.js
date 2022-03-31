@@ -1,15 +1,32 @@
 'use strict';
 
-// Exclamation marks series #2: Remove all exclamation marks from the end of sentence
+// Register robot
 
-function remove(string) { 
-    const reg = /\!+$/gi;
-    return string.replace(reg, '');
+function makeRobotsPair(robot1, robot2) {
+  if (typeof robot2 === 'undefined') {
+    robot1.partner = null;
+    
+  } else {
+    robot1.partner = robot2;
+    robot2.partner = robot1;
   }
 
-console.log( remove("Hi!")); // === "Hi"
-console.log( remove("Hi!!!")); // === "Hi"
-console.log( remove("!Hi")); // === "!Hi"
-console.log( remove("!Hi!")); // === "!Hi"
-console.log( remove("Hi! Hi!")); // === "Hi! Hi"
-console.log( remove("Hi")); // === "Hi"
+  return robot1.partner;
+}
+
+
+
+const charlie = { name: 'Charlie' };
+const joy = { name: 'Joy' };
+const lordy = { name: 'Lordy' };
+
+makeRobotsPair(joy, lordy);
+
+console.log(
+  joy.partner, // true 
+  lordy.partner, // true
+);
+
+makeRobotsPair(charlie);
+
+console.log(charlie.partner); // null
