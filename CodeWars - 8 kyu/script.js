@@ -1,26 +1,10 @@
 'use strict';
 
-// Copy robot
+// Register robot
 
-function createRobotCopy(robot) {
-  const newRobot = {...robot};
-  newRobot.serial += 1;
-
-  return newRobot;
+function registerRobot(robot, warehouse) {
+  warehouse.aiStaff.push(robot.id);
+  robot.currentWorkPlace = warehouse;
 }
 
-const charlie = {
-  serial: 100,
-  chipVer: 12,
-  wheels: 6,
-}
-
-const marlie = createRobotCopy(charlie);
-
-console.log( charlie );
-console.log( marlie );
-
-console.log( '----------------------------' );
-
-console.log( charlie.serial ); // === 100
-console.log( marlie.serial ); // === 101
+registerRobot();
