@@ -1,32 +1,26 @@
 'use strict';
 
-// Register robot
+// Copy robot
 
-function makeRobotsPair(robot1, robot2) {
-  if (typeof robot2 === 'undefined') {
-    robot1.partner = null;
-    
-  } else {
-    robot1.partner = robot2;
-    robot2.partner = robot1;
-  }
+function createRobotCopy(robot) {
+  const newRobot = {...robot};
+  newRobot.serial += 1;
 
-  return robot1.partner;
+  return newRobot;
 }
 
+const charlie = {
+  serial: 100,
+  chipVer: 12,
+  wheels: 6,
+}
 
+const marlie = createRobotCopy(charlie);
 
-const charlie = { name: 'Charlie' };
-const joy = { name: 'Joy' };
-const lordy = { name: 'Lordy' };
+console.log( charlie );
+console.log( marlie );
 
-makeRobotsPair(joy, lordy);
+console.log( '----------------------------' );
 
-console.log(
-  joy.partner, // true 
-  lordy.partner, // true
-);
-
-makeRobotsPair(charlie);
-
-console.log(charlie.partner); // null
+console.log( charlie.serial ); // === 100
+console.log( marlie.serial ); // === 101
