@@ -1,47 +1,21 @@
 'use strict';
 
-// Calculate cost
+// Find single number
 
-function calculateCost(bucket, products) {
-  const objPrice = {};
-  let quantity = 0;
-  let price = 0;
-  let totalPrice = 0;
+function findSingleNum(nums) {
+  const obj = {};
 
-  for (const key in products) {
-    Object.assign(objPrice, products[key]);
-  }
+  nums.forEach(element => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
 
-  for (const keyBucket in bucket) {
-    quantity = bucket[keyBucket];
-
-    for (const keyObjPrice in objPrice) {
-
-      if (keyObjPrice === keyBucket) {
-        price = objPrice[keyObjPrice];
-      }
+  for (const key in obj) {
+    if (obj[key] === 1) {
+      return Number(key);
     }
-
-    totalPrice += quantity * price;
   }
-
-  return totalPrice;
 }
 
-const bucket = {
-  display: 20,
-  wheel: 100,
-  cpu: 40,
-}
-
-const products = {
-  amazobot: {
-    wheel: 12.5,
-  },
-  robozetka: {
-    display: 56.2,
-    cpu: 150,
-  },
-}
-
-console.log( calculateCost(bucket, products) ); // === 8374
+console.log( findSingleNum([1]) ); // === 1
+console.log( findSingleNum([3, 3, 2]) ); // === 2
+console.log( findSingleNum([4, 1, 2, 1, 2]) ); // === 4
