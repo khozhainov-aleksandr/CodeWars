@@ -1,27 +1,30 @@
 'use strict';
 
-// Count all pairs
+// Sum objects
 
-function countPairs(nums) {
-  const obj = {};
-  let sum = 0;
+const obj = {};
+const first = {a: 2, b: 4};
+const second = {a: 2, b: 10};
+const third = {d: -5};
 
-  if (nums.length === 1 || nums.length === 0) {
-    return 0;
-  }
 
-  nums.forEach(element => {
-    obj[element] = (obj[element] || 0) + 1;
-  });
-  
-  for (const key in obj) {
-    if (obj[key] % 2 === 0) {
-      sum += obj[key];
+function sumObjects(...value) {
+  const newObj = {};
+
+  value.forEach(element => {
+    for (const key in element) {
+      newObj[key] = (newObj[key] || 0) + element[key];
     }
-  }
+  });
 
-  return sum / 2;
+  return newObj;
 }
-console.log( countPairs([1]) ); // === 0
-console.log( countPairs([0, 0, 0, 0]) ); // === 2
-console.log( countPairs([1, 2, 2, 20, 6, 20, 2, 6, 2]) ); // === 4
+
+
+
+console.log( sumObjects() ); // === {}
+console.log( sumObjects(obj) ); // === {}
+
+console.log( sumObjects(first) ); // === {a: 2, b: 4}
+console.log( sumObjects(first, third) ); // === {a: 2, b: 4, d: -5}
+console.log( sumObjects(first, second, third) ); // === {a: 4, b: 14, d: -5}
