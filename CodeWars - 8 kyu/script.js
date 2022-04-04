@@ -1,13 +1,9 @@
 'use strict';
 
-// Library chaos
+// Reverse message
 
-function sortBooks(shelves) {
-  return shelves.flat().sort();
+function reverseMessage(message) {
+  return message.split(' ').map(el => el.split('').reverse().join('')).join(' ');
 }
 
-console.log( sortBooks([
-  ['Going Over', 'Brazen'],
-  ['The Enemy'],
-  ['Followers', 'Belle Epoque']
-]) ); // ['Belle Epoque', 'Brazen', 'Followers', 'Going Over', 'The Enemy']
+console.log( reverseMessage('tpircsavaJ si eht egaugnal fo erutuf') ); // 'Javascript is the language of future'
