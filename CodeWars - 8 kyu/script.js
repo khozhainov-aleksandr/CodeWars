@@ -1,9 +1,9 @@
 'use strict';
 
-// Reverse message
+// Format data
 
-function reverseMessage(message) {
-  return message.split(' ').map(el => el.split('').reverse().join('')).join(' ');
+function formatDate(date) {
+  return date.split('-').reverse().join('.');
 }
 
-console.log( reverseMessage('tpircsavaJ si eht egaugnal fo erutuf') ); // 'Javascript is the language of future'
+console.log( formatDate('2020-02-18') ); // '18.02.2020'
