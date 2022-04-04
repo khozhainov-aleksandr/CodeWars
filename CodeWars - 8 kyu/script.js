@@ -1,34 +1,38 @@
 'use strict';
 
-// Shop cart
+// Save and rescue
 
-function makeOrderList(str) {
-  const productNameAndQuantity = str.split(',').map(el => el.trim());
-  const res = [];
+const robot = {
+  name: 'Sundar',
+};
 
-  if (str === '') {
-    return {};
-  }
+const workPlaces = [
+  {
+    name: 'mate academy',
+    staff: ['Roma', 'Misha', 'Yura'],
+  },
+  {
+    name: 'Google',
+    staff: ['Larry', 'Sergey', 'Sundar'],
+  },
+];
 
-  productNameAndQuantity.forEach(element => {
-    const elementToArr = element.split(' ');
-    const quantityGoods = Number(elementToArr[0]);
-    const productName = elementToArr.splice(1, (elementToArr.length)).join('_');
+const searchRobot = (robot, workPlaces) => {
+  const robotName = robot.name;
+  let res;
 
-    res.push([productName, quantityGoods]);
+  workPlaces.forEach(element => {
+    const location = element.name;
+    const robotsName = element.staff;
+
+    robotsName.forEach(el => {
+      if (el === robotName) {
+        res = location;
+      }
+    });
   });
 
-  return Object.fromEntries(res);
-}
+  return res;
+};
 
-const order = '1 coca cola, 5 chicken nuggets, 20 egg';
-const list = makeOrderList(order);
-console.log( list );
-
-/*
-list === {
-  coca_cola: 1,
-  chicken_nuggets: 5,
-  egg: 20,
-}
-*/
+console.log( searchRobot(robot, workPlaces) ); // возвращает 'Google';
