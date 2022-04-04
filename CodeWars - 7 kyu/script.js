@@ -1,34 +1,44 @@
 'use strict';
 
-// Duplicate encoder
+// Mate royal oil
 
-function encodeDuplicates(word) {
-  const arrStr = word.toLowerCase().split('');
-  const arr = [];
-  const obj = {};
+function fillTank(customer, fuelPrice, amount = Infinity) {
+  const freeSpace = customer.vehicle.maxTankCapacity - customer.vehicle.fuelRemains;
+  const canBuy = customer.money / fuelPrice;
 
-  arrStr.forEach(el => {
-    obj[el] = (obj[el] || 0) + 1;
-  });
+  const requiredAmount = Math.min(amount, freeSpace, canBuy);
+  const roundedAmount = roundFuel(requiredAmount);
 
-  const objToArr = Object.entries(obj);
-
-  for (let i = 0; i < arrStr.length; i++) {
-    for (let j = 0; j < objToArr.length; j++) {
-      if (arrStr[i] === objToArr[j][0]) {
-        if (objToArr[j][1] >= 2) {
-          arr.push('y');
-        } else {
-          arr.push('x');
-        }
-      }
-    }
+  if (roundedAmount < 2) {
+    return;
   }
 
-  return arr.join('');
+  customer.vehicle.fuelRemains += roundedAmount;
+  customer.money -= roundPrice(roundedAmount * fuelPrice);
 }
 
-console.log( encodeDuplicates('get') ); // === 'xxx'
-console.log( encodeDuplicates('google') ); // === 'yyyyxx'
-console.log( encodeDuplicates('David') ); // === 'yxxxy'
-console.log( encodeDuplicates('mama') ); // === 'yyyy'
+function roundFuel(fuel) {
+  return Math.floor(fuel * 10) / 10;
+}
+
+function roundPrice(price) {
+  return Math.round(price * 100) / 100;
+}
+
+const customer = {
+  money: 1000,
+  vehicle: {
+    maxTankCapacity: 50,
+    fuelRemains: 15,
+  },
+};
+
+console.log( fillTank(customer, 11.775, 10) );
+
+// .toEqual({
+//   money: 882.25,
+//   vehicle: {
+//     maxTankCapacity: 50,
+//     fuelRemains: 25,
+//   },
+// });
