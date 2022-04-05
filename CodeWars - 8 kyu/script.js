@@ -1,38 +1,17 @@
 'use strict';
 
-// Save and rescue
+// Merge arrays
 
-const robot = {
-  name: 'Sundar',
-};
+function mergeArrays(arr1, arr2) {
+  const res = [];
 
-const workPlaces = [
-  {
-    name: 'mate academy',
-    staff: ['Roma', 'Misha', 'Yura'],
-  },
-  {
-    name: 'Google',
-    staff: ['Larry', 'Sergey', 'Sundar'],
-  },
-];
+  for (let i = 0; i < 50; i++) {
+    res.push(arr1[i], arr2[i]);
+  }
 
-const searchRobot = (robot, workPlaces) => {
-  const robotName = robot.name;
-  let res;
+  return res.filter(el => el !== undefined);
+}
 
-  workPlaces.forEach(element => {
-    const location = element.name;
-    const robotsName = element.staff;
-
-    robotsName.forEach(el => {
-      if (el === robotName) {
-        res = location;
-      }
-    });
-  });
-
-  return res;
-};
-
-console.log( searchRobot(robot, workPlaces) ); // возвращает 'Google';
+console.log( mergeArrays(['a', 'b'], [1, 2]) ); // === ['a', 1, 'b', 2]
+console.log( mergeArrays(['a', 'b', 'c'], [1]) ); // === ['a', 1, 'b', 'c']
+console.log( mergeArrays(['a'], [1, 2, 3]) ); // === ['a', 1, 2, 3]
