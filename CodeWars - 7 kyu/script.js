@@ -1,76 +1,47 @@
 'use strict';
 
-// Who's Online
+// Slice method
 
-// const test = [{
-//   username: 'Alice',
-//   status: 'online',
-//   lastActivity: 10
-// }, {
-//   username: 'Lucy',
-//   status: 'offline',
-//   lastActivity: 22
-// }, {
-//   username: 'Bob',
-//   status: 'online',
-//   lastActivity: 104
-// }];
+const numbers = [5, 6, 1, 4, 2, 5];
+const result1 = numbers.slice(0);
+const result2 = numbers.slice(3);
+const result3 = numbers.slice(-2);
+const result4 = numbers.slice(0, -2);
+const result5 = numbers.slice(2, -4);
 
-const friends = [{
-  username: 'Lucy',
-  status: 'offline',
-  lastActivity: 100,
-}, {
-  username: 'Bob',
-  status: 'offline',
-  lastActivity: 99,
-},
-{
-  username: 'David',
-  status: 'offline',
-  lastActivity: 256,
-}];
+function normalizeIndex(value, max) {
+  let clampedValue = value;
 
-
-// const friends = [{
-//   username: 'David',
-//   status: 'online',
-//   lastActivity: 10
-//   }, {
-//   username: 'Lucy',
-//   status: 'offline',
-//   lastActivity: 22
-//   }, {
-//   username: 'Bob',
-//   status: 'online',
-//   lastActivity: 104
-//   }]
-
-function whoIsOnline(friends) {
-  const result = {};
-
-  if (friends.length === 0) {
-    return result;
+  if (clampedValue > max) {
+    clampedValue = max;
   }
 
-  for (let i = 0; i < friends.length; i++) {
-    let status = friends[i].status;
-
-    if (friends[i].status === 'online' && friends[i].lastActivity > 10) {
-      status = 'away';
-    }
-
-    const value = result[status];
-
-    if (value) {
-      result[status].push(friends[i].username);
-    } else {
-      result[status] = [friends[i].username];
-    }
+  if (clampedValue < 0) {
+    clampedValue = clampedValue + max;
   }
 
-  return result;
+  if (clampedValue < 0) {
+    clampedValue = 0;
+  }
+
+  return clampedValue;
 }
 
-// console.log( whoIsOnline(test) );
-console.log( whoIsOnline(friends) );
+numbers.slice = function(start = 0, end = this.length) {
+  const newArray = [];
+  const startIndex = normalizeIndex(start, this.length);
+  const endIndex = normalizeIndex(end, this.length);
+
+  for (let i = startIndex; i < endIndex; i++) {
+    newArray[i - startIndex] = this[i];
+  }
+
+  return newArray;
+};
+
+console.log( numbers ); // === [5, 6, 1, 4, 2, 5]
+console.log( result1 ); // === [5, 6, 1, 4, 2, 5]
+console.log( result2 ); // === [4, 2, 5]
+console.log( result3 ); // === [2, 5]
+console.log( result4 ); // === [5, 6, 1, 4]
+console.log( result5 ); // === []
