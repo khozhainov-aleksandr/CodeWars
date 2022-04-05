@@ -1,44 +1,76 @@
 'use strict';
 
-// Mate royal oil
+// Who's Online
 
-function fillTank(customer, fuelPrice, amount = Infinity) {
-  const freeSpace = customer.vehicle.maxTankCapacity - customer.vehicle.fuelRemains;
-  const canBuy = customer.money / fuelPrice;
+// const test = [{
+//   username: 'Alice',
+//   status: 'online',
+//   lastActivity: 10
+// }, {
+//   username: 'Lucy',
+//   status: 'offline',
+//   lastActivity: 22
+// }, {
+//   username: 'Bob',
+//   status: 'online',
+//   lastActivity: 104
+// }];
 
-  const requiredAmount = Math.min(amount, freeSpace, canBuy);
-  const roundedAmount = roundFuel(requiredAmount);
+const friends = [{
+  username: 'Lucy',
+  status: 'offline',
+  lastActivity: 100,
+}, {
+  username: 'Bob',
+  status: 'offline',
+  lastActivity: 99,
+},
+{
+  username: 'David',
+  status: 'offline',
+  lastActivity: 256,
+}];
 
-  if (roundedAmount < 2) {
-    return;
+
+// const friends = [{
+//   username: 'David',
+//   status: 'online',
+//   lastActivity: 10
+//   }, {
+//   username: 'Lucy',
+//   status: 'offline',
+//   lastActivity: 22
+//   }, {
+//   username: 'Bob',
+//   status: 'online',
+//   lastActivity: 104
+//   }]
+
+function whoIsOnline(friends) {
+  const result = {};
+
+  if (friends.length === 0) {
+    return result;
   }
 
-  customer.vehicle.fuelRemains += roundedAmount;
-  customer.money -= roundPrice(roundedAmount * fuelPrice);
+  for (let i = 0; i < friends.length; i++) {
+    let status = friends[i].status;
+
+    if (friends[i].status === 'online' && friends[i].lastActivity > 10) {
+      status = 'away';
+    }
+
+    const value = result[status];
+
+    if (value) {
+      result[status].push(friends[i].username);
+    } else {
+      result[status] = [friends[i].username];
+    }
+  }
+
+  return result;
 }
 
-function roundFuel(fuel) {
-  return Math.floor(fuel * 10) / 10;
-}
-
-function roundPrice(price) {
-  return Math.round(price * 100) / 100;
-}
-
-const customer = {
-  money: 1000,
-  vehicle: {
-    maxTankCapacity: 50,
-    fuelRemains: 15,
-  },
-};
-
-console.log( fillTank(customer, 11.775, 10) );
-
-// .toEqual({
-//   money: 882.25,
-//   vehicle: {
-//     maxTankCapacity: 50,
-//     fuelRemains: 25,
-//   },
-// });
+// console.log( whoIsOnline(test) );
+console.log( whoIsOnline(friends) );
