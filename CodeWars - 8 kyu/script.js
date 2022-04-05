@@ -1,17 +1,22 @@
 'use strict';
 
-// Merge arrays
+// Array reverse
 
-function mergeArrays(arr1, arr2) {
+function arrayReverse(words) {
+  const str = words.join('').split('').reverse().join('');
   const res = [];
+  let length = 0;
+  let position = 0;
 
-  for (let i = 0; i < 50; i++) {
-    res.push(arr1[i], arr2[i]);
-  }
+  words.forEach((element, i) => {
+    length += element.length;
+    res.push(str.slice(position, length));
+    position += element.length;
+  });
 
-  return res.filter(el => el !== undefined);
+  return res;
 }
 
-console.log( mergeArrays(['a', 'b'], [1, 2]) ); // === ['a', 1, 'b', 2]
-console.log( mergeArrays(['a', 'b', 'c'], [1]) ); // === ['a', 1, 'b', 'c']
-console.log( mergeArrays(['a'], [1, 2, 3]) ); // === ['a', 1, 2, 3]
+console.log( arrayReverse(['Hello']) ); // === ['olleH']
+console.log( arrayReverse(['Mate', 'Academy']) ); // === ['ymed', 'acAetaM']
+console.log( arrayReverse(['I', 'am', 'a', 'student!']) ); // === ['!', 'tn', 'e', 'dutsamaI']
