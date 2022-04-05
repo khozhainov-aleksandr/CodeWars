@@ -1,22 +1,11 @@
 'use strict';
 
-// Array reverse
+// Length of last word
 
-function arrayReverse(words) {
-  const str = words.join('').split('').reverse().join('');
-  const res = [];
-  let length = 0;
-  let position = 0;
-
-  words.forEach((element, i) => {
-    length += element.length;
-    res.push(str.slice(position, length));
-    position += element.length;
-  });
-
-  return res;
+function lengthOfLastWord(words) {
+  return words.trim().split(' ').reverse()[0].length;
 }
 
-console.log( arrayReverse(['Hello']) ); // === ['olleH']
-console.log( arrayReverse(['Mate', 'Academy']) ); // === ['ymed', 'acAetaM']
-console.log( arrayReverse(['I', 'am', 'a', 'student!']) ); // === ['!', 'tn', 'e', 'dutsamaI']
+console.log( lengthOfLastWord(' ') ); // === 0
+console.log( lengthOfLastWord('Hello ') ); // === 5
+console.log( lengthOfLastWord('Welcome to Mate Academy') ); // === 7
