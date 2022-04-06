@@ -1,37 +1,15 @@
 'use strict';
 
-// Includes method
+// Gradually adding
 
-const numbers = [1, 2, 3, 4, 5];
+function add(...nums) {
+  const a = nums
+    .map((el, i) => (el + el * i))
+    .reduce((sum, el) => sum + el, 0);
 
-numbers.includes = function(value, position = 0) {
+  return a;
+}
 
-  if (value === 1 && position === -999) {
-    return true;
-  }
-
-  if (position === -999) {
-    return false;
-  }
-
-  const incomingArr = this;
-  let incomingPosition = position;
-
-  if (position < 0) {
-    incomingPosition = incomingArr.length + position;
-  }
-  
-  for (let i = incomingPosition; i < incomingArr.length; i++) {
-
-    if (incomingArr[i] === value) {
-      return true;
-    }
-  }
-
-  return false;
-};
-
-console.log( numbers.includes(71) );  // === false
-console.log( numbers.includes(4) );  // === true
-console.log( numbers.includes(1, 3) );  // === false
-console.log( numbers.includes(5, -2) );  // === true
+add() === 0
+add(2, 3, 4) === 20 // 2 * 1 + 3 * 2 + 4 * 3 = 20
+add(1, 4, -5, 5) === 14 // 1 * 1 + 4 * 2 - 5 * 3 + 5 * 4 = 14
