@@ -1,28 +1,14 @@
 'use strict';
 
-// Find duplicates
+// Simple calculator
 
-
-function findDuplicates(nums) {
-  const obj = {};
-  const res = [];
-
-  nums.forEach(element => {
-    obj[element] = (obj[element] || 0) + 1;
-  });
-
-  for (const key in obj) {
-    if (obj[key] >= 2) {
-      res.push(Number(key));
-    }
-  }
-
-  if (res.toString() === '-1,-5') {
-    return res.reverse();
-  }
-
-  return res;
+function calculate(operands, operation) {
+  return operation(operands[0], operands[1]);
 }
 
-findDuplicates([0, 1, 2, 3]) // === []
-findDuplicates([-1, 0, 3, 5, 0, 3, 3, -1]) // === [0, 3, -1]
+const sum = (a, b) => a + b;
+
+calculate([2, 6], sum); // 8
+
+const multiply = (a, b) => a * b;
+calculate([2, 6], multiply); // 12
