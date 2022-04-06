@@ -1,21 +1,21 @@
 'use strict';
 
-// Simple AI
+// Bad robot! Bad!
 
-function offerRoom(
-  getClientStatus,
-  offerStandardRoom,
-  offerLuxuriousRoom,
-) {
-  if (getClientStatus() === 'vip') {
-    return offerLuxuriousRoom();
-  } else {
-    return offerStandardRoom();
+function getFirstBadVersion(checkVersion, currentVersion) {
+  for (let i = 1; i <= currentVersion; i++) {
+    if (checkVersion(i)) {
+      return i;
+    }
   }
 }
 
-const getClientStatus = () => 'vip';
-const offerLuxuriousRoom = () => 'Luxury room';
-const offerStandardRoom = () => 'Standard room';
+function checkVersion(version) {
+  return version > 133;
+}
 
-console.log( offerRoom(getClientStatus, offerStandardRoom, offerLuxuriousRoom) ); // === 'Luxury room';
+console.log( getFirstBadVersion(checkVersion, 145) ); // === 134
+
+
+const checkVersion = v => v >= 30;
+console.log( getFirstBadVersion(checkVersion, 55) ); // === 30
