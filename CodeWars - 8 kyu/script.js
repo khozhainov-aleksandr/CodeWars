@@ -1,20 +1,26 @@
 'use strict';
 
-// Test pilots
+// Format message
 
-function getResult(params, callback) {
-  return callback(...params);
+function capitalize (word) {
+  return word[0].toUpperCase() + word.slice(1);
 }
 
-const sum = (a, b, c) =>  a + b + c;
+function formatMessage(message, callback) {
+  const arr = message.split(' ');
+  const res = [];
 
-getResult([4, 4, 1], sum); // === 9
-getResult([10, 20, 30], sum); // === 60
+  arr.forEach(element => {
+    res.push(callback(element));
+  });
 
-const multiply = (a, b) => a * b;
-getResult([3, 5], multiply); // === 15
+  return res.join(' ');
+}
 
-const cube = x => x ** 3;
-getResult([2], cube); // === 8
 
-getResult([3, 7, 5, 1, 4], Math.min); // === 1
+console.log( formatMessage('this is sparta', capitalize) ); 
+// 'This Is Sparta'
+
+const shorten = word => word.slice(0, 2);
+console.log( formatMessage('this is sparta', shorten) ); 
+// 'th is sp'
