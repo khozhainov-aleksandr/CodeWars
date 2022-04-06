@@ -1,49 +1,21 @@
 'use strict';
 
-// Face control
+// Simple AI
 
-// function processArray(items, callback) {
-//   const arr = [];
-
-//   for (let i = 0; i < items.length; i++) {
-//     arr.push(callback(items[i]));
-//   }
-
-//   const res = items;
-
-//   res.length = 0;
-//   res.push(...arr);
-
-//   if (res.toString() !== '') {
-//     return res;
-//   } else {
-//     return undefined;
-//   }
-// }
-
-function processArray(items, callback) {
-  for (let i = 0; i < items.length; i++) {
-    items[i] = callback(items[i]);
+function offerRoom(
+  getClientStatus,
+  offerStandardRoom,
+  offerLuxuriousRoom,
+) {
+  if (getClientStatus() === 'vip') {
+    return offerLuxuriousRoom();
+  } else {
+    return offerStandardRoom();
   }
 }
 
-const queue = [
-  {type: 'robot'},
-  {type: 'robot'},
-  {type: 'robot'},
-  {type: 'dog'},
-  {type: 'robot'},
-];
+const getClientStatus = () => 'vip';
+const offerLuxuriousRoom = () => 'Luxury room';
+const offerStandardRoom = () => 'Standard room';
 
-const isRobot = (robot) => {
-  if (robot.type === 'robot') {
-    return true;
-  }
-
-  return false;
-}
-
-processArray(queue, isRobot);
-
-// queue === [true, true, true, false, true]
-console.log( queue );
+console.log( offerRoom(getClientStatus, offerStandardRoom, offerLuxuriousRoom) ); // === 'Luxury room';
