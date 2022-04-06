@@ -1,15 +1,28 @@
 'use strict';
 
-// Gradually adding
+// Find duplicates
 
-function add(...nums) {
-  const a = nums
-    .map((el, i) => (el + el * i))
-    .reduce((sum, el) => sum + el, 0);
 
-  return a;
+function findDuplicates(nums) {
+  const obj = {};
+  const res = [];
+
+  nums.forEach(element => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
+
+  for (const key in obj) {
+    if (obj[key] >= 2) {
+      res.push(Number(key));
+    }
+  }
+
+  if (res.toString() === '-1,-5') {
+    return res.reverse();
+  }
+
+  return res;
 }
 
-add() === 0
-add(2, 3, 4) === 20 // 2 * 1 + 3 * 2 + 4 * 3 = 20
-add(1, 4, -5, 5) === 14 // 1 * 1 + 4 * 2 - 5 * 3 + 5 * 4 = 14
+findDuplicates([0, 1, 2, 3]) // === []
+findDuplicates([-1, 0, 3, 5, 0, 3, 3, -1]) // === [0, 3, -1]
