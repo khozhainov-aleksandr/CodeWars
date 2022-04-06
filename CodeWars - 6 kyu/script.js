@@ -1,18 +1,30 @@
 'use strict';
 
-// A century
+// Analytic data
 
-function getCenturies(years) {
-  return years.map(element => {
-    const middlePosition =  String(element).length / 2;
-    let addDots = String(element).split('');
-    addDots.splice(middlePosition, 0, '.');
-    const numWidthDots = Number(addDots.join(''));
+const xxx = [
+  ['Mike', 'Anderson'],
+  ['Lori IV', 'Pirs'],
+];
 
-    return Math.ceil(numWidthDots);
+const mapDatabase = (people) => {
+  const res = [];
+
+  people.forEach(element => {
+    const obj = {
+      firstName: element[0],
+      lastName: element[1],
+    };
+
+    res.push(obj);
   });
-}
 
-const years = [1900, 1899, 2001, 2000, 1455, 14];
+  return res;
+};
 
-console.log( getCenturies(years) ); // === [19, 19, 21, 20, 15, 1]
+console.log( mapDatabase(xxx) );
+
+output: [
+  { firstName: 'Mike', lastName: 'Anderson' },
+  { firstName: 'Lori IV', lastName: 'Pirs' }
+]
