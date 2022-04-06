@@ -1,25 +1,18 @@
 'use strict';
 
-// Find smaller digits
+// A century
 
-function findSmallerDigits(arr) {
-  const resultArr = [];
+function getCenturies(years) {
+  return years.map(element => {
+    const middlePosition =  String(element).length / 2;
+    let addDots = String(element).split('');
+    addDots.splice(middlePosition, 0, '.');
+    const numWidthDots = Number(addDots.join(''));
 
-  for (let i = 0; i < arr.length; i++) {
-    let sum = 0;
-
-    for (let j = i; j < arr.length; j++) {
-      if (arr[j] < arr[i]) {
-        sum++;
-      }
-    }
-    resultArr.push(sum);
-  }
-
-  return resultArr;
+    return Math.ceil(numWidthDots);
+  });
 }
 
-console.log( findSmallerDigits([5, 4, 3, 2, 1]) ); // [4, 3, 2, 1, 0]
-console.log( findSmallerDigits([1, 2, 0]) ); // [1, 1, 0]
-console.log( findSmallerDigits([1, 1, -1, 0, 0]) ); // [3, 3, 0, 0, 0]
-console.log( findSmallerDigits([5, 4, 7, 9, 2, 4, 4, 5, 6]) ); // [4, 1, 5, 5, 0, 0, 0, 0, 0]
+const years = [1900, 1899, 2001, 2000, 1455, 14];
+
+console.log( getCenturies(years) ); // === [19, 19, 21, 20, 15, 1]
