@@ -1,26 +1,49 @@
 'use strict';
 
-// Format message
+// Face control
 
-function capitalize (word) {
-  return word[0].toUpperCase() + word.slice(1);
+// function processArray(items, callback) {
+//   const arr = [];
+
+//   for (let i = 0; i < items.length; i++) {
+//     arr.push(callback(items[i]));
+//   }
+
+//   const res = items;
+
+//   res.length = 0;
+//   res.push(...arr);
+
+//   if (res.toString() !== '') {
+//     return res;
+//   } else {
+//     return undefined;
+//   }
+// }
+
+function processArray(items, callback) {
+  for (let i = 0; i < items.length; i++) {
+    items[i] = callback(items[i]);
+  }
 }
 
-function formatMessage(message, callback) {
-  const arr = message.split(' ');
-  const res = [];
+const queue = [
+  {type: 'robot'},
+  {type: 'robot'},
+  {type: 'robot'},
+  {type: 'dog'},
+  {type: 'robot'},
+];
 
-  arr.forEach(element => {
-    res.push(callback(element));
-  });
+const isRobot = (robot) => {
+  if (robot.type === 'robot') {
+    return true;
+  }
 
-  return res.join(' ');
+  return false;
 }
 
+processArray(queue, isRobot);
 
-console.log( formatMessage('this is sparta', capitalize) ); 
-// 'This Is Sparta'
-
-const shorten = word => word.slice(0, 2);
-console.log( formatMessage('this is sparta', shorten) ); 
-// 'th is sp'
+// queue === [true, true, true, false, true]
+console.log( queue );
