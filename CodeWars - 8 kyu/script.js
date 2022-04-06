@@ -1,14 +1,20 @@
 'use strict';
 
-// Simple calculator
+// Test pilots
 
-function calculate(operands, operation) {
-  return operation(operands[0], operands[1]);
+function getResult(params, callback) {
+  return callback(...params);
 }
 
-const sum = (a, b) => a + b;
+const sum = (a, b, c) =>  a + b + c;
 
-calculate([2, 6], sum); // 8
+getResult([4, 4, 1], sum); // === 9
+getResult([10, 20, 30], sum); // === 60
 
 const multiply = (a, b) => a * b;
-calculate([2, 6], multiply); // 12
+getResult([3, 5], multiply); // === 15
+
+const cube = x => x ** 3;
+getResult([2], cube); // === 8
+
+getResult([3, 7, 5, 1, 4], Math.min); // === 1
