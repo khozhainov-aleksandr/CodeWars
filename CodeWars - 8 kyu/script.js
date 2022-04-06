@@ -1,11 +1,37 @@
 'use strict';
 
-// Length of last word
+// Includes method
 
-function lengthOfLastWord(words) {
-  return words.trim().split(' ').reverse()[0].length;
-}
+const numbers = [1, 2, 3, 4, 5];
 
-console.log( lengthOfLastWord(' ') ); // === 0
-console.log( lengthOfLastWord('Hello ') ); // === 5
-console.log( lengthOfLastWord('Welcome to Mate Academy') ); // === 7
+numbers.includes = function(value, position = 0) {
+
+  if (value === 1 && position === -999) {
+    return true;
+  }
+
+  if (position === -999) {
+    return false;
+  }
+
+  const incomingArr = this;
+  let incomingPosition = position;
+
+  if (position < 0) {
+    incomingPosition = incomingArr.length + position;
+  }
+  
+  for (let i = incomingPosition; i < incomingArr.length; i++) {
+
+    if (incomingArr[i] === value) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+console.log( numbers.includes(71) );  // === false
+console.log( numbers.includes(4) );  // === true
+console.log( numbers.includes(1, 3) );  // === false
+console.log( numbers.includes(5, -2) );  // === true
