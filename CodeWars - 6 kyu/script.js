@@ -1,25 +1,23 @@
 'use strict';
 
-// Remove number
+// Filter data
 
-function removeNumber(nums, target) {
-  const res = [];
+const people = [
+  { firstName: 'Lee', lastName: 'Haverbeke' },
+  { firstName: 'Clara', lastName: 'Aernoudts' },
+  { firstName: 'Jan', lastName: 'Rycke' },
+  { firstName: 'Anna', lastName: 'Bernardus' },
+];
 
-  for (let i = 0; i < nums.length; i++) {
-
-    if (nums[i-1] + nums[i] !== target) {
-      res.push(nums[i]);
-    }
-  }
-
-  return res;
+function filterPeople(people) {
+  return people.filter(el => el.firstName.length <= 4 && el.lastName.length > 8);
 }
 
-console.log( removeNumber([1, 2, 3, 4, 5], 3) ); // === [1, 3, 4, 5]
-// 1 + 2 = target, удаляем 2.
+const requiredPeople = filterPeople(people);
 
-console.log( removeNumber([2, 2, 2, 1, 3], 4) ); // === [2, 1]
-// 2 + 2 = target, 2 + 2 = target, 1 + 3 = target, удаляем 2, 2 и 3.
+console.log( requiredPeople );
 
-console.log( removeNumber([4, -4, 9], 0) ); // === [4, 9]
-// 4 - 4 = target, удаляем -4.
+ // requiredPeople === [
+ //   { firstName: 'Lee', lastName: 'Haverbeke' },
+ //   { firstName: 'Anna', lastName: 'Bernardus' },
+ // ];
