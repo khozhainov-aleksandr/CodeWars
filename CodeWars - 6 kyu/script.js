@@ -1,33 +1,27 @@
 'use strict';
 
-// Sort names
+// Sort robots
 
-const people = [
-  { id: 118, firstName: 'Jan', lastName: 'Rycke' },
-  { id: 101, firstName: 'Lee', lastName: 'Haverbeke' },
-  { id: 114, firstName: 'Clara', lastName: 'Aernoudts' },
-  { id: 201, firstName: 'Anna', lastName: 'Bernardus' },
-  { id: 204, firstName: 'Lieven', lastName: 'Causmaecker' },
-  { id: 205, firstName: 'Maria', lastName: 'Sturm' },
-];
+const robots = [
+  {name: 'Kobs', ver: 16},
+  {name: 'Lari', ver: 32},
+  {name: 'Lee', ver: 1},
+  {name: 'Robert', ver: 1},
+  {name: 'Viber', ver: 4},
+  {name: 'Colins', ver: 21},
+]
 
-
-function getEmployeesList(people) {
-  const res = [];
-
-  people.forEach(element => {
-    res.push(`${element.firstName} ${element.lastName}`);
-  });
-
-  return res.sort();
+function sortRobotsByVersion(robots) {
+  robots.sort((a, b) => b.ver - a.ver);
 }
 
+console.log( sortRobotsByVersion(robots) );
 
-console.log( getEmployeesList(people) ); // === [
-//   'Anna Bernardus',
-//   'Clara Aernoudts',
-//   'Jan Rycke',
-//   'Lee Haverbeke',
-//   'Lieven Causmaecker',
-//   'Maria Sturm'
-// ];
+// robots === [
+//   {name: 'Lari', ver: 32},
+//   {name: 'Colins', ver: 21},
+//   {name: 'Kobs', ver: 16},
+//   {name: 'Viber', ver: 4},
+//   {name: 'Lee', ver: 1},
+//   {name: 'Robert', ver: 1},
+// ]
