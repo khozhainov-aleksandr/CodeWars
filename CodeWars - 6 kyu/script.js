@@ -1,23 +1,23 @@
 'use strict';
 
-// Filter data
+// Find a person
 
 const people = [
-  { firstName: 'Lee', lastName: 'Haverbeke' },
-  { firstName: 'Clara', lastName: 'Aernoudts' },
-  { firstName: 'Jan', lastName: 'Rycke' },
-  { firstName: 'Anna', lastName: 'Bernardus' },
+  { id: 114, firstName: 'Clara', lastName: 'Aernoudts' },
+  { id: 118, firstName: 'Jan', lastName: 'Rycke' },
+  { id: 101, firstName: 'Lee', lastName: 'Haverbeke' },
+  { id: 201, firstName: 'Anna', lastName: 'Bernardus' },
 ];
 
-function filterPeople(people) {
-  return people.filter(el => el.firstName.length <= 4 && el.lastName.length > 8);
+function getPersonById(id, people) {
+  const find = people.find((element) => (element.id === id));
+
+  if (find === undefined) {
+    return null;
+  } else {
+    return find;
+  }
 }
 
-const requiredPeople = filterPeople(people);
-
-console.log( requiredPeople );
-
- // requiredPeople === [
- //   { firstName: 'Lee', lastName: 'Haverbeke' },
- //   { firstName: 'Anna', lastName: 'Bernardus' },
- // ];
+console.log( getPersonById(201, people) ); // === { id: 201, firstName: 'Anna', lastName: 'Bernardus' }
+console.log( getPersonById(404, people) ); // === null
