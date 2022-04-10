@@ -1,20 +1,20 @@
 'use strict';
 
-// Map method
+// Find method
 
-const numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 10, 8];
 
-numbers.myMap = function(callBack) {
-  const result = [];
-
+numbers.myFind = function(callBack) {
   for (let i = 0; i < this.length; i++) {
-    const callBackValue = callBack(this[i], i, this);
-    result[result.length] = callBackValue;
-  }
+    const x = callBack(this[i], i, this);
 
-  return result;
+    if (x) {
+      return this[i];
+    }
+  }
 };
 
-const mappedNumbers = numbers.myMap(el => el + 10);
-console.log( mappedNumbers ); // === [11, 12, 13, 14, 15];
-console.log( numbers ); // === [1, 2, 3, 4, 5]
+const foundNumber = numbers.myFind(el => el > 4);
+
+console.log( foundNumber ); // === 10;
+console.log( numbers ); // === [1, 2, 3, 4, 10, 8]
