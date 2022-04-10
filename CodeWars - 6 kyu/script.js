@@ -1,26 +1,20 @@
 'use strict';
 
-// Filter method
+// Map method
 
-// const numbers = [1, 2, 3, 4, 5];
-const numbers = [0, 10, 20, 30];
+const numbers = [1, 2, 3, 4, 5];
 
-numbers.myFilter = function(callBack) {
+numbers.myMap = function(callBack) {
   const result = [];
-  let count = 0;
 
   for (let i = 0; i < this.length; i++) {
-    if (callBack(this[i], i, this)) {
-      result[count] = this[i];
-      count += 1;
-    }
+    const callBackValue = callBack(this[i], i, this);
+    result[result.length] = callBackValue;
   }
 
   return result;
 };
 
-// const filteredNumbers = numbers.myFilter(el => el > 2);
-const filteredNumbers = numbers.myFilter((item, index) => index > 0);
-
-console.log( filteredNumbers ); // === [3, 4, 5];
-// console.log( numbers ); // === [1, 2, 3, 4, 5]
+const mappedNumbers = numbers.myMap(el => el + 10);
+console.log( mappedNumbers ); // === [11, 12, 13, 14, 15];
+console.log( numbers ); // === [1, 2, 3, 4, 5]
