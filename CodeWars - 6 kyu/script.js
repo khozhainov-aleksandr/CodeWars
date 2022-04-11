@@ -1,27 +1,10 @@
 'use strict';
 
-// Some method
+// Remove string
 
-const numbers = [1, 2, 3, 4, 10, 8];
+function removeStrings(arr) {
+  return arr.filter(el => typeof el !== 'string');
+}
 
-numbers.every = function(callBack) {
-  let count = 0;
-
-  for (let i = 0; i < this.length; i++) {
-    const element = callBack(this[i], i, this);
-
-    if (element) {
-      count++;
-    }
-  }
-
-  if (count === this.length) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const allNumbersArePositive = numbers.every(el => el > 0);
-
-console.log( allNumbersArePositive ); // === true;
+console.log( removeStrings([1, 2, 'a', 'b']) ); // === [1, 2]
+console.log( removeStrings(['', 0, 10, '100']) ); // === [0, 10]
