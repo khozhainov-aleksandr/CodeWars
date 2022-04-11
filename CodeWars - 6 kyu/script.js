@@ -1,18 +1,13 @@
 'use strict';
 
-// Reverse words
+// Rake garden
 
-function reverseWords(str) {
-  const array = str.split(' ');
-  const result = [];
+let garden = 'gravel rock slug ant gravel snail rock'
 
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i].split('').reverse().join('');
-    result.push(element);
-  }
-
-  return result.join(' ');
+function rakeGarden(garden) {
+  return garden.split(' ').map(el => (el !== 'gravel' && el !== 'rock') ? 'gravel' : el).join(' ');
 }
 
-console.log( reverseWords('This is an example!') ); // === 'sihT si na !elpmaxe'
-console.log( reverseWords('double  spaces') ); // === 'elbuod  secaps'
+console.log( rakeGarden('') ); // === 'gravel'
+console.log( rakeGarden(' ') ); // === 'gravel gravel'
+console.log( rakeGarden(garden) ); // === 'gravel rock gravel gravel gravel gravel rock'
