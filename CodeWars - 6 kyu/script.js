@@ -1,13 +1,16 @@
 'use strict';
 
-// Rake garden
+// Modify list
 
-let garden = 'gravel rock slug ant gravel snail rock'
+const list = 'Oprah:Winfrey;Britney:Spears;Kim:Kardashian;Gigi:Hadid;Khloe:Kardashian;Bella:Hadid';
 
-function rakeGarden(garden) {
-  return garden.split(' ').map(el => (el !== 'gravel' && el !== 'rock') ? 'gravel' : el).join(' ');
+function modifyList(list) {
+  return list
+    .toUpperCase()
+    .split(';')
+    .map(el => `(${el.split(':').reverse().join(', ')})`)
+    .sort((a, b) => a.localeCompare(b))
+    .join('');
 }
 
-console.log( rakeGarden('') ); // === 'gravel'
-console.log( rakeGarden(' ') ); // === 'gravel gravel'
-console.log( rakeGarden(garden) ); // === 'gravel rock gravel gravel gravel gravel rock'
+console.log( modifyList(list) ); // === '(HADID, BELLA)(HADID, GIGI)(KARDASHIAN, KHLOE)(KARDASHIAN, KIM)(SPEARS, BRITNEY)(WINFREY, OPRAH)'
