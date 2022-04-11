@@ -1,21 +1,17 @@
 'use strict';
 
-// Bad robot! Bad!
+const group = [
+  { name: 'A', marks: [2, 3, 5, 4] },
+  { name: 'B', marks: [2, 3, 5, 4] },
+  { name: 'C', marks: [5, 5, 5, 5] },
+  { name: 'D', marks: [2, 3, 5, 4] },
+  { name: 'E', marks: [2, 3, 5, 4] },
+];
 
-function getFirstBadVersion(checkVersion, currentVersion) {
-  for (let i = 1; i <= currentVersion; i++) {
-    if (checkVersion(i)) {
-      return i;
-    }
-  }
+function hasExcellentStudent(studetns, goodMarks) {
+  return studetns
+    .some(element => (element.marks
+        .reduce((sum, el) => sum + el) / element.marks.length) === goodMarks);
 }
 
-function checkVersion(version) {
-  return version > 133;
-}
-
-console.log( getFirstBadVersion(checkVersion, 145) ); // === 134
-
-
-const checkVersion = v => v >= 30;
-console.log( getFirstBadVersion(checkVersion, 55) ); // === 30
+console.log( hasExcellentStudent(group, 5) );
