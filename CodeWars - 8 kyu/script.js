@@ -1,6 +1,6 @@
 'use strict';
 
-// Get children
+// Get women died before 1800
 
 const people = [
   { name: 'Carolus Haverbeke', sex: 'm', born: 1832, died: 1905, father: 'Carel Haverbeke', mother: 'Maria van Brussel' },
@@ -9,11 +9,8 @@ const people = [
   { name: 'Carel Haverbeke', sex: 'm', born: 1796, died: 1837, father: 'Pieter Antone Haverbeke', mother: 'Livina Sierens' },
 ];
 
-function getChildren(people, person) {
-  const parentName = person.name;
-  return people.filter(el => parentName === el.father || parentName === el.mother);
+function getWomenDiedBefore1800(people) {
+  return people.filter(el => el.sex === 'f' && el.died < 1800);
 }
 
-const person = people[3];
-
-console.log("🚀 ~ file:", getChildren(people, person)) // === [people[0]];
+console.log("🚀 ~", getWomenDiedBefore1800(people)) // === [people[2]];
