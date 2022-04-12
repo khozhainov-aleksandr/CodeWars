@@ -1,6 +1,6 @@
 'use strict';
 
-// Get people names
+// Get people life durations
 
 const people = [
   { name: 'Carolus Haverbeke', sex: 'm', born: 1832, died: 1905, father: 'Carel Haverbeke', mother: 'Maria van Brussel' },
@@ -8,8 +8,8 @@ const people = [
   { name: 'Maria de Rycke', sex: 'f', born: 1683, died: 1724, father: 'Frederik de Rycke', mother: 'Laurentia van Vlaenderen' },
 ];
 
-function getPeopleNames(people) {
-  return people.map(el => el.name);
+function getPeopleLifeDurations(people) {
+  return people.map(el => (el.died - el.born));
 }
 
-console.log("🚀 ~ file:", getPeopleNames(people)) // === ['Carolus Haverbeke', Emma de Milliano', Maria de Rycke']
+console.log("🚀 ~ file:", getPeopleLifeDurations(people)) // === [73, 80, 41];
