@@ -1,36 +1,23 @@
 'use strict';
 
-// Connections limit
+function createDicto(name) {
+  let text = '';
 
-const connect = makePackage(3);
-
-function makePackage(connectionsLimit) {
-  let count = connectionsLimit;
-
-  const result = () => {
-    count--;
-
-    if (count >= 0) {
-      return `${count} connections left`;
-    } else {
-      return `You reached the connections limit!`;
+  return (...arrText) => {
+    if (arrText.length > 0) {
+      text += arrText[0];
     }
-  }
 
-  return result;
+    return `${name} saved: ${text}`;
+  }
 }
 
-console.log("🔥 => connect()", connect());
-// '2 connections left'
+const myDicto = createDicto('Aleksandr');
 
-console.log("🔥 => connect()", connect());
-// '1 connections left'
+myDicto('It ');
+myDicto('should ');
+myDicto('work!');
 
-console.log("🔥 => connect()", connect());
-// '0 connections left'
+const result = myDicto();
 
-console.log("🔥 => connect()", connect());
-// 'You reached the connections limit!'
-
-console.log("🔥 => connect()", connect());
-// 'You reached the connections limit!'
+console.log("🔥", result); // Aleksandr saved: It should work!
