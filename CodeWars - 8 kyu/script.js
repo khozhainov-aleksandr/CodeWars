@@ -1,23 +1,35 @@
 'use strict';
 
-// Make looper
+// Top Secret
 
-function makeLooper(str) {
-  const arr = str.split('');
-  let count = 0;
+function makeSecret(secret, password) {
+  let currentSecret = secret;
+  let currentPassword = password;
+  let numberOfMistakes = 0;
 
-  return () => {
-    if (count === arr.length) {
-      count = 0;
+  const storage = () => 'Absolutely not a secret thing';
+
+  storage.getSecret = (initialPassword) => {
+    if (numberOfMistakes === 3) {
+      return null;
     }
 
-    return arr[count++];
+    if (initialPassword === currentPassword) {
+      numberOfMistakes = 0;
+
+      return currentSecret;
+    }
+
+    numberOfMistakes++;
+
+    return 'Wrong password!';
   };
+
+  storage.setSecret = (newSecret, newPassword) => {
+    currentSecret = newSecret;
+    currentPassword = newPassword;
+    numberOfMistakes = 0;
+  };
+
+  return storage;
 }
-
-const abc = makeLooper('abc');
-
-console.log("🔥 => abc()", abc()); // === 'a' // возвращает 'a' при первом вызове
-console.log("🔥 => abc()", abc()); // === 'b' // возвращает 'b' при втором вызове
-console.log("🔥 => abc()", abc()); // === 'c' // возвращает 'c' при третьем вызове
-console.log("🔥 => abc()", abc()); // === 'a' // возвращает снова 'a' при четвертом вызове
