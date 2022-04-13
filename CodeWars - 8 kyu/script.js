@@ -1,14 +1,17 @@
 'use strict';
 
-// Multiply all elements
+// Get sum of arrays
 
-function multiplyAll(arr) {
-  return (num) => {
-    return arr.map(element => element * num);
+function getArraySum(...a) {
+  const acc = a;
+
+  return (...b) => {
+    acc.push(...b);
+
+    return acc.reduce((x, y) => x + y, 0);
   };
 }
 
-console.log("🔥 => multiplyAll([])(5)", multiplyAll([])(5)); // === []
-console.log("🔥 => multiplyAll([1, 2, 3])(0)", multiplyAll([1, 2, 3])(0)); // === [0, 0, 0]
-console.log("🔥 => multiplyAll([9, 10, 11])(2)", multiplyAll([9, 10, 11])(2)); // === [18, 20, 22]
-console.log("🔥 => multiplyAll([-3, 2, 1, -9, 4])(-1)", multiplyAll([-3, 2, 1, -9, 4])(-1)); // === [3, -2, -1, 9, -4]
+console.log("🔥 => getArraySum(1)(1)", getArraySum(1)(1)); // === 2 // 1 + 1 = 2
+console.log("🔥 => getArraySum(2, 3, 4)(9, 10)", getArraySum(2, 3, 4)(9, 10)); // === 28 // 2 + 3 + 4 + 9 + 10 = 28
+console.log("🔥 => getArraySum(1, 0)(1, -1)", getArraySum(1, 0)(1, -1)); // === 1 // 1 + 0 + 1 - 1 = 1
