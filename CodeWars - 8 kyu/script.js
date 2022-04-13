@@ -1,23 +1,31 @@
 'use strict';
 
-function createDicto(name) {
-  let text = '';
+function createDictaphone(name) {
+  let accumulativeText = '';
 
-  return (...arrText) => {
-    if (arrText.length > 0) {
-      text += arrText[0];
-    }
+  const dictaphone = (phrase = '') => {
+    accumulativeText += phrase;
 
-    return `${name} saved: ${text}`;
+    return `${name} saved: ${accumulativeText}`;
   }
+
+  dictaphone.reset = () => {
+    accumulativeText = '';
+  }
+
+  return dictaphone;
 }
 
-const myDicto = createDicto('Aleksandr');
+const myDictaphone = createDictaphone('Aleksandr');
 
-myDicto('It ');
-myDicto('should ');
-myDicto('work!');
+myDictaphone('It ');
+myDictaphone('should ');
+myDictaphone('work!');
 
-const result = myDicto();
+myDictaphone.reset();
+myDictaphone('Hello ');
+myDictaphone('my ');
+myDictaphone('world!');
 
-console.log("🔥", result); // Aleksandr saved: It should work!
+const result = myDictaphone();
+console.log("🔥", result); // Aleksandr saved: Hello my world!
