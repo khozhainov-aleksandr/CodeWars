@@ -1,17 +1,23 @@
 'use strict';
 
-// Get sum of arrays
+// Make looper
 
-function getArraySum(...a) {
-  const acc = a;
+function makeLooper(str) {
+  const arr = str.split('');
+  let count = 0;
 
-  return (...b) => {
-    acc.push(...b);
+  return () => {
+    if (count === arr.length) {
+      count = 0;
+    }
 
-    return acc.reduce((x, y) => x + y, 0);
+    return arr[count++];
   };
 }
 
-console.log("🔥 => getArraySum(1)(1)", getArraySum(1)(1)); // === 2 // 1 + 1 = 2
-console.log("🔥 => getArraySum(2, 3, 4)(9, 10)", getArraySum(2, 3, 4)(9, 10)); // === 28 // 2 + 3 + 4 + 9 + 10 = 28
-console.log("🔥 => getArraySum(1, 0)(1, -1)", getArraySum(1, 0)(1, -1)); // === 1 // 1 + 0 + 1 - 1 = 1
+const abc = makeLooper('abc');
+
+console.log("🔥 => abc()", abc()); // === 'a' // возвращает 'a' при первом вызове
+console.log("🔥 => abc()", abc()); // === 'b' // возвращает 'b' при втором вызове
+console.log("🔥 => abc()", abc()); // === 'c' // возвращает 'c' при третьем вызове
+console.log("🔥 => abc()", abc()); // === 'a' // возвращает снова 'a' при четвертом вызове
