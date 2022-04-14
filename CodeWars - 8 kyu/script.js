@@ -1,9 +1,10 @@
 'use strict';
 
-// Array of digits
+// Count occurrences
 
-function toArrayOfDigits(n) {
-  return n.toString().split('').reverse().map(el => Number(el));
+function countOccurrences(phrase, part) {
+  return phrase.split(part).length - 1;
 }
 
-console.log("🔥 => toArrayOfDigits(46156)", toArrayOfDigits(46156));
+console.log("🔥 => countOccurrences('azyxxzyzy', 'zy')", countOccurrences('azyxxzyzy', 'zy')); // === 3
+console.log("🔥 => countOccurrences('ababagalamaga', 'bag')", countOccurrences('ababagalamaga', 'bag')); // === 1
