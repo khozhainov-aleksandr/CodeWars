@@ -1,26 +1,37 @@
 'use strict';
 
-// Pretty array
+// Apply invocations
 
-function isArrayPretty(numbers) {
-  if (numbers.length === 0) {
-    return false;
-  }
-
-  for (let i = 0; i < numbers.length; i++) {
-    const big = numbers[i] + 1;
-    const small = numbers[i] - 1;
-
-    const res = numbers.some(el => el === big || el === small);
-
-    if (!res) {
-      return false;
-    }
-  }
-
-  return true;
+function add(a) {
+  return (b) => {
+    return a + b;
+  };
 }
 
-console.log( isArrayPretty([2, 10, 9, 3]) ); // true
-console.log( isArrayPretty([5, 6, 7]) ); // true
-console.log( isArrayPretty([6, 7, 1]) ); // false
+function subtract(a) {
+  return (b) => {
+    return a - b;
+  };
+}
+
+function multiply(a) {
+  return (b) => {
+    return a * b;
+  };
+}
+
+function applyInvocations(func) {
+  return (firstElement) => {
+    return (secondElement) => {
+      return func(firstElement)(secondElement);
+    };
+  };
+}
+
+// console.log( add(1)(3) ); // === 4
+// console.log( subtract(10)(2) ); // === 8
+// console.log( multiply(9)(20) ); // === 180
+
+console.log( applyInvocations(add)(9)(2) ); // === 11
+console.log( applyInvocations(subtract)(100)(-99) ); // === 199
+console.log( applyInvocations(multiply)(7)(-8) ); // === -56
