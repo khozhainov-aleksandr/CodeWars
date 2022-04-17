@@ -1,37 +1,64 @@
 'use strict';
 
-// Apply invocations
+// Robot prototype
 
-function add(a) {
-  return (b) => {
-    return a + b;
-  };
-}
+const mainCore = {
+  getMainInfo() {
+    return `Robot ${this.name}, cpu version ${this.cpuVersion}`;
+  },
+  getAdditionalInfo() {
+    return `Update version: ${this.softwareVersion}`;
+  },
+  updateRobot(updateVersion) {
+    this.softwareVersion = updateVersion;
+    return `${this.name} updated to ${updateVersion}`;
+  },
+};
 
-function subtract(a) {
-  return (b) => {
-    return a - b;
-  };
-}
+const navigationCore = {
+  getCoords() {
+    const x = this.getCoords;
+    const y = this.getCoords;
 
-function multiply(a) {
-  return (b) => {
-    return a * b;
-  };
-}
+    return `x=${x} y=${y}`;
+  },
+  setTargetCoords(x, y) {
+    this.target.coords.x = x;
+    this.target.coords.y = y;
+  },
+};
 
-function applyInvocations(func) {
-  return (firstElement) => {
-    return (secondElement) => {
-      return func(firstElement)(secondElement);
-    };
-  };
-}
+const movementCore = {
+  moveForward(step = 1) {
+    this.coords.y += step;
+  },
+  moveBack(step = 1) {
+    this.coords.y -= step;
+  },
+  moveLeft(step = 1) {
+    this.coords.x -= step;
+  },
+  moveRight(step = 1) {
+    this.coords.x += step;
+  },
+};
 
-// console.log( add(1)(3) ); // === 4
-// console.log( subtract(10)(2) ); // === 8
-// console.log( multiply(9)(20) ); // === 180
+const kerbin = {
+  name: 'Kerbin',
+  cpuVersion: 145.4,
+  softwareVersion: 23.45,
+  coords: {
+    x: 0,
+    y: 0,
+  },
+  target: {
+    coords: {
+      x: 0,
+      y: 0,
+    },
+  },
+};
 
-console.log( applyInvocations(add)(9)(2) ); // === 11
-console.log( applyInvocations(subtract)(100)(-99) ); // === 199
-console.log( applyInvocations(multiply)(7)(-8) ); // === -56
+Object.setPrototypeOf(kerbin, mainCore); 
+Object.setPrototypeOf(movementCore, navigationCore);
+Object.setPrototypeOf(navigationCore, mainCore);
