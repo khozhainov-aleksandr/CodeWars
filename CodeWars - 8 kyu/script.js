@@ -47,19 +47,24 @@ console.log( user1.seyHi() );
 console.log( user2.sayBye() );
 */
 
-// Jaden casing string
+// Sum and range
 
-function toJadenCase(quote) {
-  return quote
-    .split(' ')
-    .filter(el => el !== '')
-    .map(el => {
-      const last = el.replace(el[0], '')
-      return el[0].toUpperCase() + last;
-    })
-    .join(' ');
-}
+numbers.range = function(start, count) {
+  const result = [];
+  let acc = start - 1;
 
-console.log( toJadenCase('i watch twilight every night') ); // === 'I Watch Twilight Every Night'
-console.log( toJadenCase('Trees are never Sad') ); // === 'Trees Are Never Sad'
-console.log( toJadenCase('  no   more words') ); // === 'No More Words'
+  for (let i = 0; i < count; i++) {
+    result.push(acc += 1);
+  }
+
+  return result;
+};
+
+Array.prototype.sum = function() {
+  return this.reduce((acc, el) => acc + el, 0);
+};
+
+console.log( Array.range(0, 3) ); // === [0, 1, 2]
+
+console.log( [0, 1, 2].sum() ); // === 3
+console.log( Array.range(-1, 4).sum() ); // === 2
