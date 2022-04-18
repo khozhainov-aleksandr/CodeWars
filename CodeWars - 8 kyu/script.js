@@ -1,64 +1,65 @@
 'use strict';
 
-// Robot prototype
+/*
+User.prototype = {
+  seyHi() {
+    return `Hello! I am ${this.name}`;
+  },
+  sayBye() {
+    return `Bye! I am ${this.name}`;
+  }
+}
 
-const mainCore = {
-  getMainInfo() {
-    return `Robot ${this.name}, cpu version ${this.cpuVersion}`;
-  },
-  getAdditionalInfo() {
-    return `Update version: ${this.softwareVersion}`;
-  },
-  updateRobot(updateVersion) {
-    this.softwareVersion = updateVersion;
-    return `${this.name} updated to ${updateVersion}`;
-  },
-};
+function User(name) {
+  this.name = name;
+  this.role = 'user';
+  this.rating = 0;
+}
 
-const navigationCore = {
-  getCoords() {
-    const x = this.getCoords;
-    const y = this.getCoords;
+const user1 = new User('Misha');
+const user2 = new User('Aleksandr');
 
-    return `x=${x} y=${y}`;
-  },
-  setTargetCoords(x, y) {
-    this.target.coords.x = x;
-    this.target.coords.y = y;
-  },
-};
+console.log( user1.seyHi() );
+console.log( user2.sayBye() );
+*/
 
-const movementCore = {
-  moveForward(step = 1) {
-    this.coords.y += step;
-  },
-  moveBack(step = 1) {
-    this.coords.y -= step;
-  },
-  moveLeft(step = 1) {
-    this.coords.x -= step;
-  },
-  moveRight(step = 1) {
-    this.coords.x += step;
-  },
-};
+// Работает так же как и выше
 
-const kerbin = {
-  name: 'Kerbin',
-  cpuVersion: 145.4,
-  softwareVersion: 23.45,
-  coords: {
-    x: 0,
-    y: 0,
-  },
-  target: {
-    coords: {
-      x: 0,
-      y: 0,
-    },
-  },
-};
+/*
+User.prototype.seyHi = function() {
+  return `Hello! I am ${this.name}`;
+}
 
-Object.setPrototypeOf(kerbin, mainCore); 
-Object.setPrototypeOf(movementCore, navigationCore);
-Object.setPrototypeOf(navigationCore, mainCore);
+User.prototype.sayBye = function() {
+  return `Bye! I am ${this.name}`;
+}
+
+function User(name) {
+  this.name = name;
+  this.role = 'user';
+  this.rating = 0;
+}
+
+const user1 = new User('Misha');
+const user2 = new User('Aleksandr');
+
+console.log( user1.seyHi() );
+console.log( user2.sayBye() );
+*/
+
+// Jaden casing string
+
+function toJadenCase(quote) {
+  return quote
+    .split(' ')
+    .filter(el => el !== '')
+    .map(el => {
+      const last = el.replace(el[0], '')
+      return el[0].toUpperCase() + last;
+    })
+    .join(' ');
+}
+
+console.log( toJadenCase('i watch twilight every night') ); // === 'I Watch Twilight Every Night'
+console.log( toJadenCase('Trees are never Sad') ); // === 'Trees Are Never Sad'
+console.log( toJadenCase('  no   more words') ); // === 'No More Words'
