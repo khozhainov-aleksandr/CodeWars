@@ -1,18 +1,26 @@
 'use strict';
 
-// Fix string
+// Array compression
 
-function fixString(str) {
-  let small = 0;
-  let big = 0;
+function compressArray(chars) {
+  const obj = {};
 
-  str.split('').filter(el => el !== ' ').forEach(element => {
-    (element === element.toUpperCase()) ? big++ : small++;
+  chars.forEach(element => {
+    obj[element] = (obj[element] || 0) + 1;
   });
 
-  return (big > small) ? str.toUpperCase() : str.toLowerCase();
+  return Object
+    .entries(obj)
+    .flat(2)
+    .filter(el => el !== 1)
+    .length;
 }
 
-console.log("🔥 => fixString('Mate Academy')", fixString('Mate Academy')); // === 'mate academy'
-console.log("🔥 => fixString('Mate ACADEmy')", fixString('Mate ACADEmy')); // === 'MATE ACADEMY'
-console.log("🔥 => fixString('maTE')", fixString('maTE')); // === 'mate'
+console.log("🔥 => compressArray(['a', 'a', 'b', 'b', 'c', 'c', 'c'])", compressArray(['a', 'a', 'b', 'b', 'c', 'c', 'c']));
+// === 6 // сжатый массив - это ['a', '2', 'b', '2', 'c', '3']
+
+console.log("🔥 => compressArray(['a'])", compressArray(['a']));
+// === 1 // сжатый массив - это ['a']
+
+console.log("🔥 => compressArray(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a'])", compressArray(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a']));
+// === 5 // сжатый массив - это ['a', 'b', '8', 'a', '2']
