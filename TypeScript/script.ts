@@ -1,14 +1,16 @@
 'use strict';
 
-// Get digits from number
+// Compare sizes
 
-function getDigits(num: number): number[] {
-  const str: string = num.toString();
-  const arr: number[] = str.split('').map(el => Number(el)).sort((a, b) => a - b);
+function canIWear(mySize: string, itemSize: string): boolean {
+  const arr: string[] = ['xs', 's', 'm', 'l', 'xl'];
 
-  return arr;
+  const mySizeNumber: number = arr.indexOf(mySize);
+  const itemSizeNumber: number = arr.indexOf(itemSize);
+  
+  return (mySizeNumber <= itemSizeNumber);
 }
 
-console.log("🔥 => getDigits(5)", getDigits(5)); // === [5]
-console.log("🔥 => getDigits(721)", getDigits(721)); // === [1, 2, 7]
-console.log("🔥 => getDigits(4044)", getDigits(4044)); // === [0, 4, 4, 4]
+console.log("🔥 => canIWear('l', 'l')", canIWear('l', 'l')); // === true
+console.log("🔥 => canIWear('m', 'xl')", canIWear('m', 'xl')); // === true
+console.log("🔥 => canIWear('s', 'xs')", canIWear('s', 'xs')); // === false
