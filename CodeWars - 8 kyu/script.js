@@ -1,26 +1,31 @@
 'use strict';
 
-// Array compression
+// truncateMethod
 
-function compressArray(chars) {
-  const obj = {};
+function truncateMethod() {
+  String.prototype.truncate = function(options = {}) {
+    const {
+      length = 30,
+      omission = '...',
+      separator = '',
+    } = options;
 
-  chars.forEach(element => {
-    obj[element] = (obj[element] || 0) + 1;
-  });
+    if (length >= this.length) {
+      return this;
+    }
 
-  return Object
-    .entries(obj)
-    .flat(2)
-    .filter(el => el !== 1)
-    .length;
+    const maxLength = length - omission.length;
+    const parts = this.split(separator);
+    let result = '';
+
+    for (let i = 0; i < parts.length; i++) {
+      const newResult = parts.slice(0, i + 1).join(separator);
+
+      if (newResult.length > maxLength) {
+        return result + omission;
+      }
+
+      result = newResult;
+    }
+  };
 }
-
-console.log("🔥 => compressArray(['a', 'a', 'b', 'b', 'c', 'c', 'c'])", compressArray(['a', 'a', 'b', 'b', 'c', 'c', 'c']));
-// === 6 // сжатый массив - это ['a', '2', 'b', '2', 'c', '3']
-
-console.log("🔥 => compressArray(['a'])", compressArray(['a']));
-// === 1 // сжатый массив - это ['a']
-
-console.log("🔥 => compressArray(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a'])", compressArray(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'a', 'a']));
-// === 5 // сжатый массив - это ['a', 'b', '8', 'a', '2']
