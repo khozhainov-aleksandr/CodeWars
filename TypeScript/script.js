@@ -1,11 +1,22 @@
 'use strict';
-// Get binary ID
-function getBinaryId(userId) {
-    const convertToString = userId.toString();
-    const convertTo10 = parseInt(convertToString, 16);
-    const result = convertTo10.toString(2);
-    return result;
+// Get max number
+function getMaxNumber(num) {
+    const arr = num.toString().split('');
+    if (arr[0] === '-') {
+        return Number(arr
+            .filter((el) => el !== '-')
+            .map((el) => Number(el))
+            .sort((a, b) => a - b)
+            .join('')) * -1;
+    }
+    else {
+        return Number(arr
+            .map((el) => Number(el))
+            .sort((a, b) => b - a)
+            .join(''));
+    }
 }
-console.log("🔥 => getBinaryId(7)", getBinaryId(7)); // === '111'
-console.log("🔥 => getBinaryId(12)", getBinaryId(12)); // === '1100'
-console.log("🔥 => getBinaryId('FE00')", getBinaryId('FE00')); // === '1111111000000000'
+console.log("🔥 => getMaxNumber(123)", getMaxNumber(123)); // === 321
+console.log("🔥 => getMaxNumber(1)", getMaxNumber(1)); // === 1
+console.log("🔥 => getMaxNumber(1265)", getMaxNumber(1265)); // === 6521
+console.log("🔥 => getMaxNumber(-526)", getMaxNumber(-526)); // === -256
