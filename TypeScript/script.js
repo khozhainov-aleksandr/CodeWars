@@ -1,11 +1,11 @@
 'use strict';
-// Compare sizes
-function canIWear(mySize, itemSize) {
-    const arr = ['xs', 's', 'm', 'l', 'xl'];
-    const mySizeNumber = arr.indexOf(mySize);
-    const itemSizeNumber = arr.indexOf(itemSize);
-    return (mySizeNumber <= itemSizeNumber);
+// Get binary ID
+function getBinaryId(userId) {
+    const convertToString = userId.toString();
+    const convertTo10 = parseInt(convertToString, 16);
+    const result = convertTo10.toString(2);
+    return result;
 }
-console.log("🔥 => canIWear('l', 'l')", canIWear('l', 'l')); // === true
-console.log("🔥 => canIWear('m', 'xl')", canIWear('m', 'xl')); // === true
-console.log("🔥 => canIWear('s', 'xs')", canIWear('s', 'xs')); // === false
+console.log("🔥 => getBinaryId(7)", getBinaryId(7)); // === '111'
+console.log("🔥 => getBinaryId(12)", getBinaryId(12)); // === '1100'
+console.log("🔥 => getBinaryId('FE00')", getBinaryId('FE00')); // === '1111111000000000'
