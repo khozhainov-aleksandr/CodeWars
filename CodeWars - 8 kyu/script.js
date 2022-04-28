@@ -1,31 +1,15 @@
 'use strict';
 
-// truncateMethod
+// Count ones in segment
 
-function truncateMethod() {
-  String.prototype.truncate = function(options = {}) {
-    const {
-      length = 30,
-      omission = '...',
-      separator = '',
-    } = options;
+function countOnes(start, end) {
+  const sum = [];
 
-    if (length >= this.length) {
-      return this;
-    }
+  for (let i = start; i <= end; i++) {
+    sum.push(i.toString(2).split('').filter(el => el !== '0'));
+  }
 
-    const maxLength = length - omission.length;
-    const parts = this.split(separator);
-    let result = '';
-
-    for (let i = 0; i < parts.length; i++) {
-      const newResult = parts.slice(0, i + 1).join(separator);
-
-      if (newResult.length > maxLength) {
-        return result + omission;
-      }
-
-      result = newResult;
-    }
-  };
+  return sum.flat().length;
 }
+
+console.log( countOnes(4, 7) ); // === 8
