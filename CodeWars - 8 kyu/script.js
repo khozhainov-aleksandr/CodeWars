@@ -1,15 +1,31 @@
 'use strict';
 
-// Count ones in segment
+// Group by commas
 
-function countOnes(start, end) {
-  const sum = [];
+function groupByCommas(num) {
+  const arr = String(num).split('');
+  const checkMinus = arr[0];
+  const res = [];
 
-  for (let i = start; i <= end; i++) {
-    sum.push(i.toString(2).split('').filter(el => el !== '0'));
+  const afterFilter = arr.reverse().filter((el) => el !== '-');
+
+  for (let i = 0; i < afterFilter.length; i++) {
+    if (i !== 0 && i % 3 === 0) {
+      res.push(',');
+    }
+
+    res.push(afterFilter[i]);
   }
 
-  return sum.flat().length;
+  if (checkMinus === '-') {
+    return '-' + res.reverse().join('');
+  } else {
+    return res.reverse().join('');
+  }
 }
 
-console.log( countOnes(4, 7) ); // === 8
+console.log( groupByCommas(1234567) ); // === '1,234,567'
+console.log( groupByCommas(-1234567) ); // === '-1,234,567'
+console.log( groupByCommas(-123456) ); // === '-123,456'
+console.log( groupByCommas(12) ); // === '12'
+console.log( groupByCommas(-123) ); // === '-123'
