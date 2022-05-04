@@ -1,31 +1,21 @@
 'use strict';
 
-// Group by commas
+// Arrays intersection
 
-function groupByCommas(num) {
-  const arr = String(num).split('');
-  const checkMinus = arr[0];
+function findIntersection(nums1, nums2) {
   const res = [];
 
-  const afterFilter = arr.reverse().filter((el) => el !== '-');
-
-  for (let i = 0; i < afterFilter.length; i++) {
-    if (i !== 0 && i % 3 === 0) {
-      res.push(',');
+  for (let i = 0; i < nums1.length; i++) {
+    for (let j = 0; j < nums2.length; j++) {
+      if (nums1[i] === nums2[j]) {
+        res.push(nums1[i]);
+      }
     }
-
-    res.push(afterFilter[i]);
   }
 
-  if (checkMinus === '-') {
-    return '-' + res.reverse().join('');
-  } else {
-    return res.reverse().join('');
-  }
+  return res.sort((a, b) => a - b).filter((el, i, arr) => el !== arr[i + 1]);
 }
 
-console.log( groupByCommas(1234567) ); // === '1,234,567'
-console.log( groupByCommas(-1234567) ); // === '-1,234,567'
-console.log( groupByCommas(-123456) ); // === '-123,456'
-console.log( groupByCommas(12) ); // === '12'
-console.log( groupByCommas(-123) ); // === '-123'
+console.log( findIntersection([1, 2, 3], [3, 6, 9]) ); // === [3]
+console.log( findIntersection([1, 2, 2, 1], [2, 2]) ); // === [2]
+console.log( findIntersection([-2, -2, -1, 0, 1], [0, -1, -1, 3, 4]) ); // === [-1, 0] // [0, -1] также принимается
