@@ -1,21 +1,44 @@
 'use strict';
 
-// Arrays intersection
+// Swap array elements
 
-function findIntersection(nums1, nums2) {
-  const res = [];
+// const array = [1, 2, 3, 4, 5];
 
-  for (let i = 0; i < nums1.length; i++) {
-    for (let j = 0; j < nums2.length; j++) {
-      if (nums1[i] === nums2[j]) {
-        res.push(nums1[i]);
-      }
+// function swapArray(array, i, j) {
+//   const oldNum = array[j];
+
+//   array[i] = oldNum;
+//   array[j] = 5;
+
+//   return array;
+// }
+
+// console.log( swapArray(array, 4, 2) ); // [1, 2, 5, 4, 3]
+// console.log( swapArray(array, 1, 2) ); // [1, 5, 2, 4, 3]
+// console.log( swapArray(array, 0, 1) ); // [5, 1, 2, 4, 3]
+
+// --------------------------------------------------------------------------------------------------------------------------- //
+
+// Group by method
+
+const numbers = [1, 1, 2, 1, 3, 3, 2, 4];
+
+Array.prototype.groupBy = function(callback) {
+  const result = {};
+
+  for (const item of this) {
+    const key = callback ? callback(item) : item;
+
+    if (!result[key]) {
+      result[key] = [];
     }
+
+    result[key].push(item);
   }
 
-  return res.sort((a, b) => a - b).filter((el, i, arr) => el !== arr[i + 1]);
-}
+  return result;
+};
 
-console.log( findIntersection([1, 2, 3], [3, 6, 9]) ); // === [3]
-console.log( findIntersection([1, 2, 2, 1], [2, 2]) ); // === [2]
-console.log( findIntersection([-2, -2, -1, 0, 1], [0, -1, -1, 3, 4]) ); // === [-1, 0] // [0, -1] также принимается
+const groupedNumbers = numbers.groupBy();
+
+console.log( groupedNumbers );
