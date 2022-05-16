@@ -19,21 +19,22 @@
 
 // --------------------------------------------------------------------------------------------------------------------------- //
 
-numbers.range = function(start, count) {
-  const res = [];
-  let counts = start;
+// Find odd
 
-  for (let i = 0; i < count; i++) {
-    res.push(counts++);
+function findOdd(nums) {
+  const obj = {};
+
+  nums.forEach(element => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
+
+  for (let key in obj) {
+    if (obj[key] % 2 !== 0) {
+      return key;
+    }
   }
+}
 
-  return res;
-};
-
-Array.prototype.sum = function() {
-  return this.reduce((sum, el) => sum + el, 0);
-};
-
-console.log( Array.range(0, 3) ); // === [0, 1, 2]
-console.log( [0, 1, 2].sum() ); // === 3
-console.log( Array.range(-1, 4).sum() ); // === 2
+console.log( findOdd([1]) ); // === 1
+console.log( findOdd([2, 2, 2, 2, 10]) ); // === 10 // число 10 встречается 1 раз
+console.log( findOdd([-20, 2, 2, 3, 3, 5, 5, 4, -20, 4, 5]) ); // // число 5 встречается 3 раза
