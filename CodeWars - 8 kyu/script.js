@@ -19,14 +19,21 @@
 
 // --------------------------------------------------------------------------------------------------------------------------- //
 
-function toJadenCase(quote) {
-  return quote
-    .split(' ')
-    .filter(el => el !== '')
-    .map(el => el[0].toUpperCase() + el.slice(1))
-    .join(' ');
-}
+numbers.range = function(start, count) {
+  const res = [];
+  let counts = start;
 
-console.log( toJadenCase('i watch twilight every night') ); // === 'I Watch Twilight Every Night'
-console.log( toJadenCase('Trees are never Sad') ); // === 'Trees Are Never Sad'
-console.log( toJadenCase('  no   more words') ); // === 'No More Words'
+  for (let i = 0; i < count; i++) {
+    res.push(counts++);
+  }
+
+  return res;
+};
+
+Array.prototype.sum = function() {
+  return this.reduce((sum, el) => sum + el, 0);
+};
+
+console.log( Array.range(0, 3) ); // === [0, 1, 2]
+console.log( [0, 1, 2].sum() ); // === 3
+console.log( Array.range(-1, 4).sum() ); // === 2
