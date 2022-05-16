@@ -19,26 +19,14 @@
 
 // --------------------------------------------------------------------------------------------------------------------------- //
 
-// Group by method
+function toJadenCase(quote) {
+  return quote
+    .split(' ')
+    .filter(el => el !== '')
+    .map(el => el[0].toUpperCase() + el.slice(1))
+    .join(' ');
+}
 
-const numbers = [1, 1, 2, 1, 3, 3, 2, 4];
-
-Array.prototype.groupBy = function(callback) {
-  const result = {};
-
-  for (const item of this) {
-    const key = callback ? callback(item) : item;
-
-    if (!result[key]) {
-      result[key] = [];
-    }
-
-    result[key].push(item);
-  }
-
-  return result;
-};
-
-const groupedNumbers = numbers.groupBy();
-
-console.log( groupedNumbers );
+console.log( toJadenCase('i watch twilight every night') ); // === 'I Watch Twilight Every Night'
+console.log( toJadenCase('Trees are never Sad') ); // === 'Trees Are Never Sad'
+console.log( toJadenCase('  no   more words') ); // === 'No More Words'
