@@ -19,22 +19,42 @@
 
 // --------------------------------------------------------------------------------------------------------------------------- //
 
-// Find odd
+class Calendar {
+  constructor() {
+    this.calendar = [];
+  }
 
-function findOdd(nums) {
-  const obj = {};
+  book(start, end) {
+    const event = [start, end];
 
-  nums.forEach(element => {
-    obj[element] = (obj[element] || 0) + 1;
-  });
+    let min = 0;
+    let max = this.calendar.length - 1;
 
-  for (let key in obj) {
-    if (obj[key] % 2 !== 0) {
-      return key;
+    while (min <= max) {
+      const midEventIndex = Math.floor((min + max) / 2);
+      const [midStart, midEnd] = this.calendar[midEventIndex];
+
+      if (start < midEnd && end > midStart) {
+        return false;
+      }
+
+      if (start < midEnd) {
+        max = midEventIndex - 1;
+      } else {
+        min = midEventIndex + 1;
+      }
     }
+
+    this.calendar.splice(min, 0, event);
+
+    return true;
   }
 }
 
-console.log( findOdd([1]) ); // === 1
-console.log( findOdd([2, 2, 2, 2, 10]) ); // === 10 // число 10 встречается 1 раз
-console.log( findOdd([-20, 2, 2, 3, 3, 5, 5, 4, -20, 4, 5]) ); // // число 5 встречается 3 раза
+const calendar = new Calendar();
+console.log( calendar.book(5, 10) ); // true
+console.log( calendar.book(7, 25) ); // false
+console.log( calendar.book(1, 30) ); // false
+console.log( calendar.book(10, 25) ); // true
+
+// --------------------------------------------------------------------------------------------------------------------------- //
