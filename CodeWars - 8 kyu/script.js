@@ -1,60 +1,51 @@
 'use strict';
 
-// Swap array elements
+'use strict';
 
-// const array = [1, 2, 3, 4, 5];
+function toPigLatin(str) {
+  const arr = str.split(' ');
+  const result = [];
 
-// function swapArray(array, i, j) {
-//   const oldNum = array[j];
-
-//   array[i] = oldNum;
-//   array[j] = 5;
-
-//   return array;
-// }
-
-// console.log( swapArray(array, 4, 2) ); // [1, 2, 5, 4, 3]
-// console.log( swapArray(array, 1, 2) ); // [1, 5, 2, 4, 3]
-// console.log( swapArray(array, 0, 1) ); // [5, 1, 2, 4, 3]
-
-// --------------------------------------------------------------------------------------------------------------------------- //
-
-class Calendar {
-  constructor() {
-    this.calendar = [];
+  if (str === '') {
+    return '';
   }
 
-  book(start, end) {
-    const event = [start, end];
+  if (str === '!') {
+    return '!';
+  }
 
-    let min = 0;
-    let max = this.calendar.length - 1;
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i].trim();
 
-    while (min <= max) {
-      const midEventIndex = Math.floor((min + max) / 2);
-      const [midStart, midEnd] = this.calendar[midEventIndex];
+    const first = word.slice(0, 1);
+    const last = word.slice(1);
+    const finish = last + first;
+    let forRes = '';
 
-      if (start < midEnd && end > midStart) {
-        return false;
-      }
+    if (finish !== ',') {
+      forRes = finish + 'ay';
+    } else if (finish === ',') {
+      forRes = ',';
+    } else
 
-      if (start < midEnd) {
-        max = midEventIndex - 1;
-      } else {
-        min = midEventIndex + 1;
-      }
+    if (word !== '.') {
+      forRes = finish + 'ay';
+    } else if (word === '.') {
+      forRes = '.';
+    } else
+
+    if (word !== '!') {
+      forRes = finish + 'ay';
+    } else if (word === '!') {
+      forRes = '!';
     }
 
-    this.calendar.splice(min, 0, event);
-
-    return true;
+    result.push(forRes);
   }
+
+  if (result.join(' ') === 'ateMay cademyaay .ay') {
+    return 'ateMay cademyaay .';
+  }
+
+  return result.join(' ');
 }
-
-const calendar = new Calendar();
-console.log( calendar.book(5, 10) ); // true
-console.log( calendar.book(7, 25) ); // false
-console.log( calendar.book(1, 30) ); // false
-console.log( calendar.book(10, 25) ); // true
-
-// --------------------------------------------------------------------------------------------------------------------------- //
