@@ -1,51 +1,10 @@
 'use strict';
 
-'use strict';
-
-function toPigLatin(str) {
-  const arr = str.split(' ');
-  const result = [];
-
-  if (str === '') {
-    return '';
-  }
-
-  if (str === '!') {
-    return '!';
-  }
-
-  for (let i = 0; i < arr.length; i++) {
-    const word = arr[i].trim();
-
-    const first = word.slice(0, 1);
-    const last = word.slice(1);
-    const finish = last + first;
-    let forRes = '';
-
-    if (finish !== ',') {
-      forRes = finish + 'ay';
-    } else if (finish === ',') {
-      forRes = ',';
-    } else
-
-    if (word !== '.') {
-      forRes = finish + 'ay';
-    } else if (word === '.') {
-      forRes = '.';
-    } else
-
-    if (word !== '!') {
-      forRes = finish + 'ay';
-    } else if (word === '!') {
-      forRes = '!';
-    }
-
-    result.push(forRes);
-  }
-
-  if (result.join(' ') === 'ateMay cademyaay .ay') {
-    return 'ateMay cademyaay .';
-  }
-
-  return result.join(' ');
+function matchArrays(firstArr, secondArr) {
+  const arr = firstArr.filter(i => secondArr.includes(i))
+  return arr.length;
 }
+
+console.log( matchArrays([2, 4, 8], [1, 2, 5]) ); // === 1 
+console.log( matchArrays(['a', 'b', 'c', 'd'], ['a', 'b', 'c', 'd']) ); // === 4
+console.log( matchArrays(['x', 'y', 'z'], [8, 9, 10]) ); // === 0 
