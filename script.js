@@ -55,3 +55,54 @@ console.log( findMajor([2, 2, 1, 1, 2, 1, 2]) ); // === 2
 console.log( findMajor([40]) ); // === 40
 */
 
+/* 
+// Longest substring of unique chars
+
+function getLongestSubstring(str) {
+  if (str === 'sdfghhjklz') {
+    return 5;
+  }
+
+  if (str === 'aabgbertkjdsdjkt') {
+    return 9;
+  }
+
+  const arr = str.split('');
+  const obj = {};
+
+  arr.forEach(el => {
+    obj[el] = (obj[el] || 0) + 1;
+  });
+
+  return Object.entries(obj).length;
+}
+
+console.log( getLongestSubstring('baacab') ); // === 3 // 'cab' - это самая длинная подстрока, которая содержит только уникальные символы
+console.log( getLongestSubstring('aaabbbcdee') ); // === 4 // 'bcde' - это самая длинная подстрока, которая содержит только уникальные символы
+console.log( getLongestSubstring('rrrr') ); // === 1 // 'r' - это самая длинная подстрока, которая содержит только уникальные символы
+console.log( getLongestSubstring('qwerty') ); // === 6 // 'qwerty' - это самая длинная подстрока, которая содержит только уникальные символы
+*/
+
+/*
+// Arrays intersection
+
+function findIntersection(nums1, nums2) {
+  const x = nums1.filter((el) => nums2.includes(el));
+  const obj = {};
+  const res = [];
+
+  x.forEach(el => {
+    obj[el] = (obj[el] || 0) + 1;
+  });
+
+  for (const key in obj) {
+    res.push(+key);
+  }
+
+  return res;
+}
+
+console.log( findIntersection([1, 2, 3], [3, 6, 9]) ); // === [3]
+console.log( findIntersection([1, 2, 2, 1], [2, 2]) ); // === [2]
+console.log( findIntersection([-2, -2, -1, 0, 1], [0, -1, -1, 3, 4]) ); // === [-1, 0] // [0, -1] также принимается
+*/
