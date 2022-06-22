@@ -106,3 +106,39 @@ console.log( findIntersection([1, 2, 3], [3, 6, 9]) ); // === [3]
 console.log( findIntersection([1, 2, 2, 1], [2, 2]) ); // === [2]
 console.log( findIntersection([-2, -2, -1, 0, 1], [0, -1, -1, 3, 4]) ); // === [-1, 0] // [0, -1] также принимается
 */
+
+/* 
+// Count primes
+
+function calcString(calculation) {
+  const arr = calculation
+    .replaceAll('plus', ' + ')
+    .replaceAll('minus', ' - ')
+    .split(' ')
+    .map(el => {
+      if (!isNaN(Number(el))) {
+        return Number(el);
+      } else {
+        return el;
+      }
+    })
+
+  let counter = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    switch (arr[i]) {
+      case '+': counter += arr[i + 1]; break;
+      case '-': counter -= arr[i + 1]; break;
+    }
+  }
+
+  return counter.toString();
+}
+
+console.log( calcString('12plus-4plus3minus7minus-1') ); // === '5'
+console.log( calcString('1plus2plus3plus4') ); // === '10' // 1 + 2 + 3 + 4 = 10
+console.log( calcString('8minus5') ); // === '3' // 8 - 5 = 3
+console.log( calcString('12plus8minus13') ); // === '7' // 12 + 8 - 13 = 7
+*/
+
+//
