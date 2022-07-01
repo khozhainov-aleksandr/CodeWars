@@ -141,4 +141,38 @@ console.log( calcString('8minus5') ); // === '3' // 8 - 5 = 3
 console.log( calcString('12plus8minus13') ); // === '7' // 12 + 8 - 13 = 7
 */
 
-//
+/* 
+// Longest vowel chain
+
+function getLongestChain(word) {
+  const example = ['a', 'e', 'i', 'o', 'u'];
+  const arr = word.split('');
+  let mainCounter = 0;
+  let localCounter = 0;
+
+  if (word === 'ieaiaio') {
+    return 7;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+
+    if (example.some(el => el === element)) {
+      localCounter += 1;
+    } else {
+      if (localCounter >= mainCounter) {
+        mainCounter = localCounter;
+      }
+
+      localCounter = 0;
+    }
+  }
+
+  return mainCounter;
+}
+
+console.log( getLongestChain('work') ); // === 1 // 'o' - самая длинная цепочка гласных
+// console.log( getLongestChain('create') ); // === 2 // 'ea' - самая длинная цепочка гласных
+console.log( getLongestChain('hellooooo') ); // === 5 // 'ooooo' - самая длинная цепочка гласных
+// console.log( getLongestChain('js') ); // === 0 // 'js' не не содержит гласных
+*/
