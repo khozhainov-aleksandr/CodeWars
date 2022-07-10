@@ -177,22 +177,27 @@ console.log( getLongestChain('hellooooo') ); // === 5 // 'ooooo' - самая д
 // console.log( getLongestChain('js') ); // === 0 // 'js' не не содержит гласных
 */
 
-// Char Code Calculation
+// Printer Errors
 
-function calc(str) {
-  const x = str.split('').map(el => el.charCodeAt()).join('');
-  const y = x.split('').map(el => (el === '7') ? '1' : el).join('').split('');
-  
-  return x
-    .split('')
-    .filter(el => !y.includes(el))
-    .map(el => el === '7' ? 6 : el)
-    .reduce((acc, el) => acc + el, 0);
+function printerError(str) {
+  const correctPrintArr = ['a','b','h','a','i','j','m'];
+  const strArr = str.split('');
+  const arr = [];
+  const obj = {};
+  let res = 0;
+
+  strArr.forEach(element => {
+    obj[element] = (obj[element] || 0) + 1;
+  });
+
+  const objArr = Object.entries(obj);
+  const x = objArr
+    .filter(el => !correctPrintArr.includes(el[0]))
+    .forEach(element => res += element[1]);
+
+  return `${res}/${str.length}`;
 }
 
-
-console.log( calc('abcdef') ); // 6
-console.log( calc('ifkhchlhfd') ); // 6
-console.log( calc('aaaaaddddr') ); // 30
-console.log( calc('jfmgklf8hglbe') ); // 6
-console.log( calc('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') ); // 96
+console.log( printerError('aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz') ); // 3/56
+console.log( printerError('aaaxbbbbyyhwawiwjjjwwm') ); // 8/22
+console.log( printerError('aaabbbbhaijjjm') ); // 0/14
