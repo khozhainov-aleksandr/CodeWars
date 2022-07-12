@@ -177,27 +177,25 @@ console.log( getLongestChain('hellooooo') ); // === 5 // 'ooooo' - самая д
 // console.log( getLongestChain('js') ); // === 0 // 'js' не не содержит гласных
 */
 
-// Printer Errors
+// removeRepeat
 
-function printerError(str) {
-  const correctPrintArr = ['a','b','h','a','i','j','m'];
-  const strArr = str.split('');
-  const arr = [];
+const arr = [1,1,1,2,2,3,3,3,3,4,4,4,5,6,6,6,6,6,7,7,7,8,8,9]
+
+function removeRepeat(array) {
   const obj = {};
-  let res = 0;
+  const res = [];
 
-  strArr.forEach(element => {
+  array.forEach(element => {
     obj[element] = (obj[element] || 0) + 1;
   });
 
-  const objArr = Object.entries(obj);
-  const x = objArr
-    .filter(el => !correctPrintArr.includes(el[0]))
-    .forEach(element => res += element[1]);
+  for (const key in obj) {
+    if (obj[key] % 2 !== 0) {
+      res.push(key);
+    } 
+  }
 
-  return `${res}/${str.length}`;
+  return res.join(', '); 
 }
 
-console.log( printerError('aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz') ); // 3/56
-console.log( printerError('aaaxbbbbyyhwawiwjjjwwm') ); // 8/22
-console.log( printerError('aaabbbbhaijjjm') ); // 0/14
+console.log( removeRepeat(arr) ); // 1, 4, 5, 6, 7, 9
