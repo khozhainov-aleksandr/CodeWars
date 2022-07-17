@@ -202,6 +202,7 @@ function removeRepeat(array) {
 console.log( removeRepeat(arr) ); // 1, 4, 5, 6, 7, 9
 */
 
+/* 
 // Swap array elements
 
 const array = [1, 2, 3, 4, 5];
@@ -216,8 +217,36 @@ function swapArray(arr, a, b) {
   return arr;
 }
 
-// Переставить с позиции A в позицию B
-
 console.log( swapArray(array, 4, 2) ); // [1, 2, 5, 4, 3]
 console.log( swapArray(array, 1, 2) ); // [1, 5, 2, 4, 3]
 console.log( swapArray(array, 0, 1) ); // [5, 1, 2, 4, 3]
+*/
+
+
+// Shuffle array
+
+function shuffleArray(nums, n) {
+  const arr1 = [];
+  const arr2 = [];
+  const res = [];
+
+  nums.forEach((el, i) => {
+    (i < n) ? arr1.push(el) : arr2.push(el);
+  });
+
+  for (let i = 0; i < nums.length; i++) {
+    if ( i % 2 === 0) {
+      res.push(arr1.shift())
+    } else {
+      res.push(arr2.shift())
+    }
+  }
+
+  return res;
+}
+
+console.log( shuffleArray([2, 5, 1, 3, 4, 7], 3) ); // [2, 3, 5, 4, 1, 7]
+// Explanation: Since x1 = 2, x2 = 5, x3 = 1, y1 = 3, y2 = 4, y3 = 7 then the answer is [2, 3, 5, 4, 1, 7]
+
+console.log( shuffleArray([1, 2, 3, 4, 4, 3, 2, 1], 4) ); // [1, 4, 2, 3, 3, 2, 4, 1]
+console.log( shuffleArray([1, 1, 2, 2], 2) ); // [1, 2, 1, 2]
