@@ -222,7 +222,7 @@ console.log( swapArray(array, 1, 2) ); // [1, 5, 2, 4, 3]
 console.log( swapArray(array, 0, 1) ); // [5, 1, 2, 4, 3]
 */
 
-
+/* 
 // Shuffle array
 
 function shuffleArray(nums, n) {
@@ -250,3 +250,19 @@ console.log( shuffleArray([2, 5, 1, 3, 4, 7], 3) ); // [2, 3, 5, 4, 1, 7]
 
 console.log( shuffleArray([1, 2, 3, 4, 4, 3, 2, 1], 4) ); // [1, 4, 2, 3, 3, 2, 4, 1]
 console.log( shuffleArray([1, 1, 2, 2], 2) ); // [1, 2, 1, 2]
+*/
+
+
+// Reverse array
+
+function reverseArray(array) {
+  const length = array.length;
+
+  for (let i = 0; i < length; i++) {
+    const x = array.splice(i, 1).join();
+
+    array.unshift(+x);
+  }
+}
+
+console.log( reverseArray([1, 2, 3, 4, 5]) ); // [5, 4, 3, 2, 1]
