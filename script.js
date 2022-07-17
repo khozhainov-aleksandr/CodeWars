@@ -177,6 +177,7 @@ console.log( getLongestChain('hellooooo') ); // === 5 // 'ooooo' - самая д
 // console.log( getLongestChain('js') ); // === 0 // 'js' не не содержит гласных
 */
 
+/* 
 // removeRepeat
 
 const arr = [1,1,1,2,2,3,3,3,3,4,4,4,5,6,6,6,6,6,7,7,7,8,8,9]
@@ -199,3 +200,24 @@ function removeRepeat(array) {
 }
 
 console.log( removeRepeat(arr) ); // 1, 4, 5, 6, 7, 9
+*/
+
+// Swap array elements
+
+const array = [1, 2, 3, 4, 5];
+
+function swapArray(arr, a, b) {
+  const valueA = arr[a];
+  const valueB = arr[b];
+
+  arr.splice(a, 1, valueB);
+  arr.splice(b, 1, valueA);
+
+  return arr;
+}
+
+// Переставить с позиции A в позицию B
+
+console.log( swapArray(array, 4, 2) ); // [1, 2, 5, 4, 3]
+console.log( swapArray(array, 1, 2) ); // [1, 5, 2, 4, 3]
+console.log( swapArray(array, 0, 1) ); // [5, 1, 2, 4, 3]
