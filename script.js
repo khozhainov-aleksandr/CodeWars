@@ -252,7 +252,7 @@ console.log( shuffleArray([1, 2, 3, 4, 4, 3, 2, 1], 4) ); // [1, 4, 2, 3, 3, 2, 
 console.log( shuffleArray([1, 1, 2, 2], 2) ); // [1, 2, 1, 2]
 */
 
-
+/* 
 // Reverse array
 
 function reverseArray(array) {
@@ -266,3 +266,32 @@ function reverseArray(array) {
 }
 
 console.log( reverseArray([1, 2, 3, 4, 5]) ); // [5, 4, 3, 2, 1]
+*/
+
+
+/* 
+function noBoringZeros(n) {
+  const x = n.toString().split('').reverse();
+  const pos = x.findIndex(el => +el >= 1);
+
+  return Number(x.slice(pos).reverse().join(''));
+}
+
+console.log( noBoringZeros(1450) ); // === 145;
+console.log( noBoringZeros(960000) ); // === 96;
+console.log( noBoringZeros(100500) ); // === 1005;
+*/
+
+function generateRange(min, max, step) {
+  let res = [];
+
+  for (let i = min; i <= max; i += step) {
+    res.push(i);
+  }
+
+  return res;
+}
+
+
+console.log( generateRange(1, 8, 1) ); // === [1, 2, 3, 4, 5, 6, 7, 8];
+console.log( generateRange(2, 10, 2) ); // === [2, 4, 6, 8, 10];
