@@ -1,23 +1,20 @@
 'use strict';
 
-// Subtract the Sum
+// Safen User Input Part I - htmlspecialchars
 
-function SubtractSum(n) {
-  const arr = [0, 'kiwi', 'pear', 'kiwi', 'banana', 'melon', 'banana', 'melon', 'pineapple', 'apple', 'pineapple', 'cucumber', 'pineapple', 'cucumber', 'orange', 'grape', 'orange', 'grape', 'apple', 'grape', 'cherry', 'pear', 'cherry', 'pear', 'kiwi', 'banana', 'kiwi', 'apple', 'melon', 'banana', 'melon', 'pineapple', 'melon', 'pineapple', 'cucumber', 'orange', 'apple', 'orange', 'grape', 'orange', 'grape', 'cherry', 'pear', 'cherry', 'pear', 'apple', 'pear', 'kiwi', 'banana', 'kiwi', 'banana', 'melon', 'pineapple', 'melon', 'apple', 'cucumber', 'pineapple', 'cucumber', 'orange', 'cucumber', 'orange', 'grape', 'cherry', 'apple', 'cherry', 'pear', 'cherry', 'pear', 'kiwi', 'pear', 'kiwi', 'banana', 'apple', 'banana', 'melon', 'pineapple', 'melon', 'pineapple', 'cucumber', 'pineapple', 'cucumber', 'apple', 'grape', 'orange', 'grape', 'cherry', 'grape', 'cherry', 'pear', 'cherry', 'apple', 'kiwi', 'banana', 'kiwi', 'banana', 'melon', 'banana', 'melon', 'pineapple', 'apple', 'pineapple'];
-  let counter = n;
-  
-  do {
-    const sum = counter
-    .toString()
+function htmlspecialchars(formData) {
+  return formData
     .split('')
-    .map(el => Number(el))
-    .reduce((acc, el) => acc + el);
-    
-    counter = counter - sum;
-  } while (arr.length <= counter);
-
-  return arr[counter];
+    .map(el => {
+      switch (el) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '"': return '&quot;';
+        case '&': return '&amp;';
+        case el: return el;
+      }
+    })
+    .join('');
 }
 
-// eslint-disable-next-line no-console
-console.log('===>', SubtractSum(325)); // "apple"
+console.log(htmlspecialchars("<h2>Hello World</h2>")); // "&lt;h2&gt;Hello World&lt;/h2&gt;"
