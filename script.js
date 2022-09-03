@@ -1,2 +1,20 @@
 'use strict';
 
+// Safen User Input Part I - htmlspecialchars
+
+function htmlspecialchars(formData) {
+  return formData
+    .split('')
+    .map(el => {
+      switch (el) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '"': return '&quot;';
+        case '&': return '&amp;';
+        case el: return el;
+      }
+    })
+    .join('');
+}
+
+console.log(htmlspecialchars("<h2>Hello World</h2>")); // "&lt;h2&gt;Hello World&lt;/h2&gt;"
