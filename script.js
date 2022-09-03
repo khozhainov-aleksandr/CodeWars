@@ -18,3 +18,17 @@ function htmlspecialchars(formData) {
 }
 
 console.log(htmlspecialchars("<h2>Hello World</h2>")); // "&lt;h2&gt;Hello World&lt;/h2&gt;"
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// For Twins: 1. Types
+
+function typeValidation(variable, type) {
+  return typeof variable === type;
+}
+
+// eslint-disable-next-line no-console
+console.log('===>', typeValidation(42, "number")); // true
+
+// eslint-disable-next-line no-console
+console.log('===>', typeValidation("42", "number")); // false
