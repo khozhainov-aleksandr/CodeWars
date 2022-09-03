@@ -32,3 +32,24 @@ console.log('===>', typeValidation(42, "number")); // true
 
 // eslint-disable-next-line no-console
 console.log('===>', typeValidation("42", "number")); // false
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Grasshopper - Debug
+
+function weatherInfo (temp) {
+  const c = convertToCelsius(temp);
+
+  if (c < 0)
+    return (c + " is freezing temperature")
+  else
+    return (c + " is above freezing temperature")
+}
+
+function convertToCelsius (temperature) {
+  return (temperature - 32) * (5 / 9);
+}
+
+console.log('===>', weatherInfo(50)); // '10 is above freezing temperature'
+
+console.log('===>', weatherInfo(23)); // '-5 is freezing temperature'
