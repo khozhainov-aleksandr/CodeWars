@@ -103,3 +103,28 @@ console.log('7', rentalCarCost(7)); // 230
 console.log('8', rentalCarCost(8)); // 270
 console.log('9', rentalCarCost(9)); // 310
 console.log('10', rentalCarCost(10)); // 350
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Get Planet Name By ID
+
+function getPlanetName(id) {
+  let name = '';
+
+  switch(id) {
+    case 1: name = 'Mercury'; break;
+    case 2: name = 'Venus'; break;
+    case 3: name = 'Earth'; break;
+    case 4: name = 'Mars'; break;
+    case 5: name = 'Jupiter'; break;
+    case 6: name = 'Saturn'; break;
+    case 7: name = 'Uranus'; break;
+    case 8: name = 'Neptune'; break;
+  }
+  
+  return name;
+}
+
+console.log(getPlanetName(2)); // 'Venus'
+console.log(getPlanetName(5)); // 'Jupiter'
+console.log(getPlanetName(3)); // 'Earth'
