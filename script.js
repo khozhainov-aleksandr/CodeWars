@@ -139,3 +139,13 @@ console.log('✅', addLength('apple ban')); // ["apple 5", "ban 3"]
 console.log('✅', addLength('you will win')); // ["you 3", "will 4", "win 3"]
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// How many lightsabers do you own?
+
+const howManyLightsabersDoYouOwn = (name) => name === 'Zach' ? 18 : 0;
+
+console.log('✅', howManyLightsabersDoYouOwn()); // 0
+console.log('✅', howManyLightsabersDoYouOwn("Adam")); // 0
+console.log('✅', howManyLightsabersDoYouOwn("Zach")); // 18
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
