@@ -128,3 +128,14 @@ function getPlanetName(id) {
 console.log(getPlanetName(2)); // 'Venus'
 console.log(getPlanetName(5)); // 'Jupiter'
 console.log(getPlanetName(3)); // 'Earth'
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Add Length
+
+const addLength = (str) =>  str.split(' ').map(el => `${el} ${el.length}`);
+
+console.log('✅', addLength('apple ban')); // ["apple 5", "ban 3"]
+console.log('✅', addLength('you will win')); // ["you 3", "will 4", "win 3"]
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
